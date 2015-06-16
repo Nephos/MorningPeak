@@ -8,7 +8,7 @@ class CreateBills < ActiveRecord::Migration
       t.text :description
 
       t.integer :amount
-      t.bool :paid
+      t.boolean :paid
 
       t.date :emission_date
       t.date :due_date
