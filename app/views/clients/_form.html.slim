@@ -6,4 +6,19 @@
         - @client.errors.full_messages.each do |message|
           li = message
 
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :activity
+    = f.text_field :activity
+  .field
+    = f.label :contact_reasons
+    = f.text_area :contact_reasons
+  .field
+    = f.label :contact_id
+    = f.number_field :contact_id
   .actions = f.submit

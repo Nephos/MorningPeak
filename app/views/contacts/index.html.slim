@@ -3,6 +3,16 @@ h1 Listing contacts
 table
   thead
     tr
+      th Client
+      th Name
+      th Phone
+      th Email
+      th Last contact
+      th Note
+      th Region
+      th Department
+      th Postal code
+      th Address
       th
       th
       th
@@ -10,6 +20,16 @@ table
   tbody
     - @contacts.each do |contact|
       tr
+        td = contact.client
+        td = contact.name
+        td = contact.phone
+        td = contact.email
+        td = contact.last_contact
+        td = contact.note
+        td = contact.region
+        td = contact.department
+        td = contact.postal_code
+        td = contact.address
         td = link_to 'Show', contact
         td = link_to 'Edit', edit_contact_path(contact)
         td = link_to 'Destroy', contact, data: {:confirm => 'Are you sure?'}, :method => :delete

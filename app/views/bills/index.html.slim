@@ -3,6 +3,13 @@ h1 Listing bills
 table
   thead
     tr
+      th Client
+      th Title
+      th Description
+      th Amount
+      th Paid
+      th Emission date
+      th Due date
       th
       th
       th
@@ -10,6 +17,13 @@ table
   tbody
     - @bills.each do |bill|
       tr
+        td = bill.client
+        td = bill.title
+        td = bill.description
+        td = bill.amount
+        td = bill.paid
+        td = bill.emission_date
+        td = bill.due_date
         td = link_to 'Show', bill
         td = link_to 'Edit', edit_bill_path(bill)
         td = link_to 'Destroy', bill, data: {:confirm => 'Are you sure?'}, :method => :delete

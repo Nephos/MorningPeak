@@ -1,14 +1,11 @@
 class CreateClients < ActiveRecord::Migration
   def change
     create_table :clients do |t|
-
       t.string :name
       t.string :url
-
       t.string :activity
       t.text :contact_reasons
-
-      # main contact
+      #main contact
       t.integer :contact_id
 
       t.timestamps null: false

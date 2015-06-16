@@ -1,5 +1,20 @@
 p#notice = notice
 
+p
+  strong Name:
+  = @client.name
+p
+  strong Url:
+  = @client.url
+p
+  strong Activity:
+  = @client.activity
+p
+  strong Contact reasons:
+  = @client.contact_reasons
+p
+  strong Contact:
+  = @client.contact_id
 
 = link_to 'Edit', edit_client_path(@client)
 '|

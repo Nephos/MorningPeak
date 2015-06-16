@@ -6,4 +6,34 @@
         - @contact.errors.full_messages.each do |message|
           li = message
 
+  .field
+    = f.label :client
+    = f.text_field :client
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :last_contact
+    = f.date_select :last_contact
+  .field
+    = f.label :note
+    = f.text_area :note
+  .field
+    = f.label :region
+    = f.text_field :region
+  .field
+    = f.label :department
+    = f.text_field :department
+  .field
+    = f.label :postal_code
+    = f.text_field :postal_code
+  .field
+    = f.label :address
+    = f.text_area :address
   .actions = f.submit

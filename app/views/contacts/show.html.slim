@@ -1,5 +1,35 @@
 p#notice = notice
 
+p
+  strong Client:
+  = @contact.client
+p
+  strong Name:
+  = @contact.name
+p
+  strong Phone:
+  = @contact.phone
+p
+  strong Email:
+  = @contact.email
+p
+  strong Last contact:
+  = @contact.last_contact
+p
+  strong Note:
+  = @contact.note
+p
+  strong Region:
+  = @contact.region
+p
+  strong Department:
+  = @contact.department
+p
+  strong Postal code:
+  = @contact.postal_code
+p
+  strong Address:
+  = @contact.address
 
 = link_to 'Edit', edit_contact_path(@contact)
 '|

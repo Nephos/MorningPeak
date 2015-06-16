@@ -69,6 +69,6 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params[:bill]
+      params.require(:bill).permit(:client_id, :title, :description, :amount, :paid, :emission_date, :due_date)
     end
 end

@@ -1,5 +1,26 @@
 p#notice = notice
 
+p
+  strong Client:
+  = @bill.client
+p
+  strong Title:
+  = @bill.title
+p
+  strong Description:
+  = @bill.description
+p
+  strong Amount:
+  = @bill.amount
+p
+  strong Paid:
+  = @bill.paid
+p
+  strong Emission date:
+  = @bill.emission_date
+p
+  strong Due date:
+  = @bill.due_date
 
 = link_to 'Edit', edit_bill_path(@bill)
 '|
