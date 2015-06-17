@@ -7,20 +7,21 @@ html
     = csrf_meta_tags
 
   body
-    nav.navbar.navbar-default.navbar-static-top
+    nav.navbar.navbar-default
       .container-fluid
-        .row
-          .col-md-6
-            h1 = ['Appli', ENV['COMPANY'], 'client gestion'].join(' ')
-          .col-md-6
+        .navbar-header
+          .navbar-brand = ['Appli', ENV['COMPANY'], 'client gestion'].join(' ')
+
+        .navbar-collapse.collapse
+          .nav.navbar-nav
             - if admin_signed_in?
-              = link_to "clients", clients_url, class: 'btn btn-lg btn-primary'
-              = link_to "contacts", contacts_url, class: 'btn btn-lg btn-info'
-              = link_to "bills", bills_url, class: 'btn btn-lg btn-success'
-              = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning'
+              = link_to "clients", clients_url, class: 'btn btn-lg btn-primary narbar-btn'
+              = link_to "contacts", contacts_url, class: 'btn btn-lg btn-info narbar-btn'
+              = link_to "bills", bills_url, class: 'btn btn-lg btn-success narbar-btn'
+              = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
             - elsif user_signed_in?
-              = link_to "bills", bills_url, class: 'btn btn-lg btn-success'
-              = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning'
+              = link_to "bills", bills_url, class: 'btn btn-lg btn-success narbar-btn'
+              = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
 
     .yield
       .container-fluid
