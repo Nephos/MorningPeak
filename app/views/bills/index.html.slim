@@ -1,6 +1,6 @@
 h1 Listing bills
 
-table.table-condensed
+table.table.table-condensed.table-striped
   thead
     tr
       th Client
@@ -22,8 +22,14 @@ table.table-condensed
         td = bill.description
         td = bill.amount
         td = bill.paid
-        td = bill.emission_date
-        td = bill.due_date
+        td = distance_of_time_in_words_to_now(bill.emission_date) + " - " + bill.emission_date.to_s(:long) if bill.emission_date
+        - if bill.due_date < Date.today
+          - if bill.paid
+            td.bg-success = distance_of_time_in_words_to_now(bill.due_date) + " - " + bill.due_date.to_s(:long)
+          - else
+            td.bg-danger = distance_of_time_in_words_to_now(bill.due_date) + " - " + bill.due_date.to_s(:long)
+        - else
+          td.bg-info = distance_of_time_in_words_to_now(bill.due_date).to_s + " - " + bill.due_date.to_s(:long)
         td = link_to 'Show', bill
         td = link_to 'Edit', edit_bill_path(bill)
         td = link_to 'Destroy', bill, data: {:confirm => 'Are you sure?'}, :method => :delete

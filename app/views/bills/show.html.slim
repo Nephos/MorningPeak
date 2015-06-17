@@ -20,7 +20,13 @@ p
   = @bill.emission_date
 p
   strong Due date:
-  = @bill.due_date
+  - if @bill.due_date < Date.today
+    - if @bill.paid
+      .bg-success = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
+    - else
+      .bg-danger = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
+  - else
+    .bg-info = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
 
 = link_to 'Edit', edit_bill_path(@bill), class: 'btn btn-sm btn-default'
 = link_to 'Back', bills_path, class: 'btn btn-sm btn-default'
