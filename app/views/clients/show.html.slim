@@ -12,10 +12,19 @@ p
 p
   strong Contact reasons:
   = @client.contact_reasons
-- if @client.contact
-  p
-    strong Contact:
-    = link_to @client.contact.name, @client.contact
+p
+  strong Contact:
+  = link_to @client.contact_name, @client.contact
+
+p
+  strong Finances:
+  ul
+    li
+      | Quality: #{@client.financial_level} %
+    li
+      | Already paid: #{@client.weight} €
+    li
+      | Due: #{@client.retard} €
 
 = link_to 'Edit', edit_client_path(@client), class: 'btn btn-sm btn-default'
 = link_to 'Back', clients_path, class: 'btn btn-sm btn-default'
