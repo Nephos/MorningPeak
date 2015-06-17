@@ -6,22 +6,21 @@ class Ticket < ActiveRecord::Base
   CREATORS = ['Admin', 'User']
 
   belongs_to :creator, polymorphic: true
+  delegate :name, to: :creator, prefix: true
+
+  belongs_to :ticket
+  has_many :tickets
+
+  scope :heads, -> { where(ticket_id: nil) }
+  scope :open, -> { heads.where(state: OPEN) }
+  scope :close, -> { heads.where(state: CLOSE) }
+
   before_save :check_creator
   def check_creator
     return true if CREATORS.include? creator_type
     errors.add "#{creator_type} is not in the list of the possible creators list"
     raise ActiveRecord::RecordInvalid.new(self)
   end
-
-  belongs_to :bill
-  belongs_to :ticket
-  has_many :tickets
-
-  delegate :name, to: :creator, prefix: true
-
-  scope :heads, -> { where(ticket_id: nil) }
-  scope :open, -> { heads.where(state: OPEN) }
-  scope :close, -> { heads.where(state: CLOSE) }
 
   def last_response
     head.tickets.last
