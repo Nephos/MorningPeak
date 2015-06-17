@@ -9,6 +9,9 @@ table.table.table-condensed
       th Contact reasons
       th Last Contact
       th Contact
+      td Financial Quality
+      th Retard
+      th Weight
       th
       th
       th
@@ -22,6 +25,9 @@ table.table.table-condensed
         td = client.contact_reasons
         td = client.last_contact
         td = link_to client.contact_name, client.contact
+        td = client.financial_level
+        td = client.retard
+        td = client.weight
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete

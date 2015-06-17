@@ -25,4 +25,19 @@ class Client < ActiveRecord::Base
     bills.where("due_date <= '#{Date.today}'").where(paid: true)
   end
 
+  def financial_level
+    weight = weight()
+    retard = retard()
+    th = weight.to_f / (weight + retard)
+    th.nan? ? nil : (th * 100).round
+  end
+
+  def weight
+    bills.where(paid: true).pluck(:amount).sum
+  end
+
+  def retard
+    bills.where(paid: false).pluck(:amount).sum
+  end
+
 end

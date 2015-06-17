@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20150616181457) do
 
   create_table "bills", force: :cascade do |t|
     t.integer  "client_id"
-    t.string   "title"
+    t.string   "title",                         null: false
     t.text     "description"
     t.integer  "amount"
-    t.boolean  "paid"
+    t.boolean  "paid",          default: false, null: false
     t.date     "emission_date"
     t.date     "due_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "bills", ["client_id"], name: "index_bills_on_client_id", using: :btree
