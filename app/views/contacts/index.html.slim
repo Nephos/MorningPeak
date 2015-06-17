@@ -20,8 +20,8 @@ table.table.table-condensed
   tbody
     - @contacts.each do |contact|
       tr
-        td = contact.client
-        td = contact.name
+        td = link_to contact.client.name, contact.client
+        td = link_to contact.name, contact
         td = contact.phone
         td = contact.email
         td = contact.last_contact
