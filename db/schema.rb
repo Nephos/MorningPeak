@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616181457) do
+ActiveRecord::Schema.define(version: 20150617094127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150616181457) do
   add_index "bills", ["client_id"], name: "index_bills_on_client_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "url"
     t.string   "activity"
@@ -57,6 +58,21 @@ ActiveRecord::Schema.define(version: 20150616181457) do
 
   add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "bill_id"
+    t.integer  "ticket_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "state",       default: "open", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "tickets", ["bill_id"], name: "index_tickets_on_bill_id", using: :btree
+  add_index "tickets", ["client_id"], name: "index_tickets_on_client_id", using: :btree
+  add_index "tickets", ["ticket_id"], name: "index_tickets_on_ticket_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -77,4 +93,7 @@ ActiveRecord::Schema.define(version: 20150616181457) do
 
   add_foreign_key "bills", "clients"
   add_foreign_key "contacts", "clients"
+  add_foreign_key "tickets", "bills"
+  add_foreign_key "tickets", "clients"
+  add_foreign_key "tickets", "tickets"
 end

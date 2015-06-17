@@ -1,7 +1,9 @@
 class Client < ActiveRecord::Base
   has_many :contacts
   has_many :bills
+  has_many :tickets
   belongs_to :contact
+  belongs_to :user
 
   delegate :name, to: :contact, allow_nil: true, prefix: true
 

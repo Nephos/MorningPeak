@@ -1,0 +1,37 @@
+h1 Listing tickets
+
+table.table.table-condensed.table-striped
+  thead
+    tr
+      th Client
+      th Bill
+      th Title
+      th Description
+      th State
+      th Last update
+      th
+      th
+      th
+      th
+
+  tbody
+    - @tickets.each do |ticket|
+      tr
+        td = link_to ticket.client.name, ticket.client
+        td = link_to ticket.bill.title, ticket if ticket.bill
+        td = link_to ticket.title, ticket
+        td = ticket.description
+        - if ticket.state == Ticket::CLOSE
+          td.bg-danger = ticket.state
+        - else
+          td.bg-success = ticket.state
+        td = ticket.updated_at.to_s(:long)
+        td = link_to 'Show', ticket
+        td = link_to 'Edit', edit_ticket_path(ticket)
+        td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+        / TODO
+        td = link_to 'Close', ticket if ticket.is_open?
+
+br
+
+= link_to 'New Ticket', new_ticket_path, class: 'btn btn-sm btn-default'

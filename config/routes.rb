@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tickets
   root to: "clients#index"
   resources :contacts
   resources :bills

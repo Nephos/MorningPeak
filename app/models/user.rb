@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable#,
          #:validatable
+  has_one :client
 end

@@ -11,3 +11,5 @@ Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today+14,
 Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today-1, client_id: 2, emission_date: Date.today-14, paid: true)
 Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today-1, client_id: 2, emission_date: Date.today-14)
 Bill.create(title: "Mise en place d'API", amount: 2000, due_date: Date.today+31, client_id: 2, emission_date: Date.today)
+Ticket.create(title: "Pas possible d'éditer la page d'acceuil", bill_id: 1, client_id: 2)
+Ticket.create(title: "Vous avez supprimé une page. Elle a été remise en place gratuitement.", bill_id: 1, client_id: 2, ticket_id: 1)

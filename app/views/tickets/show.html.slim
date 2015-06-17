@@ -1,0 +1,60 @@
+p#notice = notice
+
+p
+  strong Réponse à:
+  = link_to @ticket.head.title, @ticket.head
+
+p
+  strong State:
+  - if @ticket.head.state == Ticket::CLOSE
+    td.bg-danger = @ticket.head.state
+  - else
+    td.bg-success = @ticket.head.state
+
+p
+  strong Client:
+  = @ticket.client_name
+p
+  strong Bill:
+  = @ticket.bill_title
+p
+  strong Title:
+  = @ticket.title
+p
+  strong Description:
+  = @ticket.description
+p
+  strong State:
+  = @ticket.state
+
+table.table.table-condensed.table-striped
+  thead
+    tr
+      th Bill
+      th Title
+      th Description
+      th Last update
+      th
+      th
+      th
+
+  tbody
+    - @ticket.tickets.each do |ticket|
+      tr
+        td = link_to ticket.bill.title, ticket if ticket.bill
+        td = link_to ticket.title, ticket
+        td = ticket.description
+        - if ticket.state == Ticket::CLOSE
+          td.bg-danger = ticket.state
+        - else
+          td.bg-success = ticket.state
+        td = ticket.updated_at.to_s(:long)
+        td = link_to 'Show', ticket
+        td = link_to 'Edit', edit_ticket_path(ticket)
+        td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+
+= link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to 'Back', tickets_path, class: 'btn btn-sm btn-default'
