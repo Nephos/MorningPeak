@@ -33,11 +33,11 @@ class Client < ActiveRecord::Base
   end
 
   def weight
-    bills.where(paid: true).pluck(:amount).sum
+    bills_old.pluck(:amount).sum
   end
 
   def retard
-    bills.where(paid: false).pluck(:amount).sum
+    bills_retard.pluck(:amount).sum
   end
 
 end
