@@ -7,6 +7,7 @@ table.table.table-condensed
       th Url
       th Activity
       th Contact reasons
+      th Last Contact
       th Contact
       th
       th
@@ -19,10 +20,8 @@ table.table.table-condensed
         td = client.url
         td = client.activity
         td = client.contact_reasons
-        - if client.contact
-          td = link_to client.contact.name, client.contact
-        - else
-          td
+        td = client.last_contact
+        td = link_to client.contact_name, client.contact
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
