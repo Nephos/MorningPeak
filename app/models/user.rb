@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one :client
   delegate :name, to: :client
   has_many :tickets, as: :creator
+  has_many :contacts, through: :client
+  has_many :bills, through: :client
 
   after_create :create_client
   def create_client

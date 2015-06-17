@@ -1,0 +1,28 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @bill.title
+p
+  strong Description:
+  = @bill.description
+p
+  strong Amount:
+  = @bill.amount
+p
+  strong Paid:
+  = @bill.paid
+p
+  strong Emission date:
+  = @bill.emission_date
+p
+  strong Due date:
+  - if @bill.due_date < Date.today
+    - if @bill.paid
+      .bg-success = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
+    - else
+      .bg-danger = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
+  - else
+    .bg-info = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
+
+= link_to 'Back', client_bills_path, class: 'btn btn-sm btn-default'

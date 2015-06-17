@@ -1,0 +1,33 @@
+h1 Listing bills
+
+table.table.table-condensed.table-striped
+  thead
+    tr
+      th Title
+      th Description
+      th Amount
+      th Paid
+      th Emission date
+      th Due date
+      th
+      th
+      th
+
+  tbody
+    - @bills.each do |bill|
+      tr
+        td = link_to bill.title, client_bill_path(bill)
+        td = bill.description
+        td = bill.amount
+        td = bill.paid
+        td = distance_of_time_in_words_to_now(bill.emission_date) + " - " + bill.emission_date.to_s(:long) if bill.emission_date
+        - if bill.due_date < Date.today
+          - if bill.paid
+            td.bg-success = distance_of_time_in_words_to_now(bill.due_date) + " - " + bill.due_date.to_s(:long)
+          - else
+            td.bg-danger = distance_of_time_in_words_to_now(bill.due_date) + " - " + bill.due_date.to_s(:long)
+        - else
+          td.bg-info = distance_of_time_in_words_to_now(bill.due_date).to_s + " - " + bill.due_date.to_s(:long)
+        td = link_to 'Show', bill
+
+br
