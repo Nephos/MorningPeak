@@ -2,7 +2,7 @@ p#notice = notice
 
 p
   strong Client:
-  = @contact.client
+  = link_to @contact.client.name, @contact.client
 p
   strong Name:
   = @contact.name
@@ -31,6 +31,5 @@ p
   strong Address:
   = @contact.address
 
-= link_to 'Edit', edit_contact_path(@contact)
-'|
-= link_to 'Back', contacts_path
+= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-sm btn-default'
+= link_to 'Back', contacts_path, class: 'btn btn-sm btn-default'

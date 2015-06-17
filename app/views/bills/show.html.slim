@@ -2,7 +2,7 @@ p#notice = notice
 
 p
   strong Client:
-  = @bill.client
+  = link_to @bill.client.name, @bill.client
 p
   strong Title:
   = @bill.title
@@ -22,6 +22,5 @@ p
   strong Due date:
   = @bill.due_date
 
-= link_to 'Edit', edit_bill_path(@bill)
-'|
-= link_to 'Back', bills_path
+= link_to 'Edit', edit_bill_path(@bill), class: 'btn btn-sm btn-default'
+= link_to 'Back', bills_path, class: 'btn btn-sm btn-default'

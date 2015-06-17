@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  root to: "clients#index"
   resources :contacts
   resources :bills
-  resources :clients
+  resources :clients do
+    resources :contacts
+    resources :bills
+  end
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -16,6 +16,53 @@ p
   strong Contact:
   = @client.contact_id
 
-= link_to 'Edit', edit_client_path(@client)
-'|
-= link_to 'Back', clients_path
+= link_to 'Edit', edit_client_path(@client), class: 'btn btn-sm btn-default'
+= link_to 'Back', clients_path, class: 'btn btn-sm btn-default'
+
+table.table.table-condensed
+  caption Contacts list
+  tr
+    th Name
+    th Phone
+    th Email
+  - @client.contacts.each do |contact|
+      tr
+        td = link_to contact.name, contact
+        td = contact.phone
+        td = contact.email
+
+table.table.table-condensed
+  caption = "Retarded Due Bills list #{@client.bills_retard.pluck(:amount).sum} €"
+  tr
+    th Title
+    th Amount
+    th Due date
+  - @client.bills_retard.where(paid: false).each do |bill|
+      tr
+        td = link_to bill.title, bill
+        td = bill.amount
+        td = bill.due_date
+
+table.table.table-condensed
+  caption = "Next Bills list #{@client.bills_next.pluck(:amount).sum} €"
+  tr
+    th Title
+    th Amount
+    th Due date
+  - @client.bills_next.each do |bill|
+      tr
+        td = link_to bill.title, bill
+        td = bill.amount
+        td = bill.due_date
+
+table.table.table-condensed
+  caption = "Old Bills list #{@client.bills_old.pluck(:amount).sum} €"
+  tr
+    th Title
+    th Amount
+    th Due date
+  - @client.bills_old.where(paid: true).each do |bill|
+      tr
+        td = link_to bill.title, bill
+        td = bill.amount
+        td = bill.due_date

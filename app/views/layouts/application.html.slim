@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | WebImmo
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.container
+      .row
+        h1.col-md-4 Appli WIR gestion
+        .col-md-4
+          = link_to "clients", clients_url, class: 'btn btn-lg btn-primary'
+          = link_to "contacts", contacts_url, class: 'btn btn-lg btn-info'
+          = link_to "bills", bills_url, class: 'btn btn-lg btn-success'
+    = yield

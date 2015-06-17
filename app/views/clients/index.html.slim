@@ -1,6 +1,6 @@
 h1 Listing clients
 
-table
+table.table.table-condensed
   thead
     tr
       th Name
@@ -15,15 +15,18 @@ table
   tbody
     - @clients.each do |client|
       tr
-        td = client.name
+        td = link_to client.name, client
         td = client.url
         td = client.activity
         td = client.contact_reasons
-        td = client.contact_id
+        - if client.contact
+          td = link_to client.contact.name, client.contact
+        - else
+          td
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
-= link_to 'New Client', new_client_path
+= link_to 'New Client', new_client_path, class: 'btn btn-sm btn-default'
