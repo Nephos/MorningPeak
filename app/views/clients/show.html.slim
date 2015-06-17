@@ -12,9 +12,10 @@ p
 p
   strong Contact reasons:
   = @client.contact_reasons
-p
-  strong Contact:
-  = @client.contact_id
+- if @client.contact
+  p
+    strong Contact:
+    = link_to @client.contact.name, @client.contact
 
 = link_to 'Edit', edit_client_path(@client), class: 'btn btn-sm btn-default'
 = link_to 'Back', clients_path, class: 'btn btn-sm btn-default'
