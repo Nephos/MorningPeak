@@ -47,8 +47,8 @@ table.table.table-condensed
     th Title
     th Amount
     th Due date
-  - @client.bills_retard.where(paid: false).each do |bill|
-      tr
+  - @client.bills_retard.each do |bill|
+      tr.bg-danger
         td = link_to bill.title, bill
         td = bill.amount
         td = bill.due_date
@@ -60,7 +60,7 @@ table.table.table-condensed
     th Amount
     th Due date
   - @client.bills_next.each do |bill|
-      tr
+      tr.bg-info
         td = link_to bill.title, bill
         td = bill.amount
         td = bill.due_date
@@ -71,8 +71,8 @@ table.table.table-condensed
     th Title
     th Amount
     th Due date
-  - @client.bills_old.where(paid: true).each do |bill|
-      tr
+  - @client.bills_old.each do |bill|
+      tr.bg-success
         td = link_to bill.title, bill
         td = bill.amount
         td = bill.due_date
