@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
   end
 
   def respond
+    @ticket_id = @ticket.head.id
     @ticket = Ticket.new(ticket_id: @ticket.head.id)
     render :new
   end

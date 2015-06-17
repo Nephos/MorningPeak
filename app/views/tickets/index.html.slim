@@ -13,6 +13,7 @@ table.table.table-condensed.table-striped
       th
       th
       th
+      th
 
   tbody
     - @tickets.each do |ticket|
@@ -29,7 +30,7 @@ table.table.table-condensed.table-striped
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)
         td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        / TODO
+        td = link_to 'Respond', ticket_respond_path(ticket)
         td = link_to 'Close', ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch if ticket.is_open?
 
 br
