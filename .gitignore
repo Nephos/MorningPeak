@@ -15,5 +15,11 @@
 /log/*
 !/log/.keep
 /tmp
-.env
+
+# doc
 erd.pdf
+
+# secret config
+config/database.yml
+.env
+.env*

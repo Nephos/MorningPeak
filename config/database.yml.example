@@ -2,21 +2,21 @@ development:
   adapter: postgresql
   host: localhost
   username: root
-  database: webimmo_dev
+  database: appli_dev
   password: toor
 
 test:
   adapter: postgresql
   host: localhost
   username: root
-  database: webimmo_test
+  database: appli_test
   password: toor
 
 production:
   adapter: postgresql
   host: localhost
   username: root
-  database: webimmo_prod
+  database: appli_prod
   password: toor
 
 # # SQLite version 3.x
