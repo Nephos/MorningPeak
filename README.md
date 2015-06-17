@@ -5,7 +5,7 @@
 - First install ruby 2 or greater. It is not advised to do the following commands as ``root``.
 - Then, be sure you have postgresql installed, and started.
 
-```
+```bash
 cd Appli/
 gem install bundler
 bundle install
