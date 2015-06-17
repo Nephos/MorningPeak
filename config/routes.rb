@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
-  resources :tickets
   root to: "clients#index"
+
+  resources :tickets do
+    patch :close # TODO: for now, argument is ticket_id instead of id. How to change that ?
+    get :respond
+  end
+  # path '/tickets/:id/close', to: 'tickets#close', as: 'close_ticket'
+  #get '/tickets/:id/respond', to: 'tickets#respond', as: 'respond_ticket'
+
   resources :contacts
   resources :bills
   resources :clients do
     resources :contacts
     resources :bills
+    resources :tickets
   end
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

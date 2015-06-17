@@ -1,7 +1,7 @@
 class Ticket < ActiveRecord::Base
 
-  OPEN = :open
-  CLOSE = :close
+  OPEN = 'open'
+  CLOSE = 'close'
 
   belongs_to :client
   belongs_to :bill
@@ -18,6 +18,14 @@ class Ticket < ActiveRecord::Base
   def head
     return self if not ticket
     return ticket.head
+  end
+
+  def close
+    if is_close?
+      errors.add "Already close"
+      return false
+    end
+    head.update(state: Ticket::CLOSE) && update(state: Ticket::CLOSE)
   end
 
   def is_open?

@@ -1,10 +1,28 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket_custom_route, only: [:close, :respond]
 
   # GET /tickets
   # GET /tickets.json
   def index
     @tickets = Ticket.heads.order('state DESC')
+  end
+
+  def close
+    respond_to do |format|
+      if @ticket.close
+        format.html { redirect_to @ticket, notice: 'Ticket was successfully closed.' }
+        format.json { render :show, status: :ok, location: @ticket }
+      else
+        format.html { render :edit }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def respond
+    @ticket = Ticket.new(ticket_id: @ticket.head.id)
+    render :new
   end
 
   # GET /tickets/1
@@ -65,6 +83,10 @@ class TicketsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
       @ticket = Ticket.find(params[:id])
+    end
+
+    def set_ticket_custom_route
+      @ticket = Ticket.find(params[:ticket_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
