@@ -15,6 +15,10 @@ class Ticket < ActiveRecord::Base
   scope :open, -> { heads.where(state: OPEN) }
   scope :close, -> { heads.where(state: CLOSE) }
 
+  def last_response
+    tickets.last
+  end
+
   def head
     return self if not ticket
     return ticket.head
@@ -26,6 +30,14 @@ class Ticket < ActiveRecord::Base
       return false
     end
     head.update(state: Ticket::CLOSE) && update(state: Ticket::CLOSE)
+  end
+
+  def open
+    if is_open?
+      errors.add "Already open"
+      return false
+    end
+    head.update(state: Ticket::OPEN) && update(state: Ticket::OPEN)
   end
 
   def is_open?

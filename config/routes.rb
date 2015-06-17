@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :tickets do
     patch :close # TODO: for now, argument is ticket_id instead of id. How to change that ?
+    patch :open
     get :respond
   end
   # path '/tickets/:id/close', to: 'tickets#close', as: 'close_ticket'

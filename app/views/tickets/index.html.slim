@@ -9,6 +9,7 @@ table.table.table-condensed.table-striped
       th Description
       th State
       th Last update
+      th Last response
       th
       th
       th
@@ -27,11 +28,15 @@ table.table.table-condensed.table-striped
         - else
           td.bg-success = ticket.state
         td = ticket.updated_at.to_s(:long)
+        td = ticket.last_response ? distance_of_time_in_words_to_now(ticket.last_response.updated_at) : "never"
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)
         td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to 'Respond', ticket_respond_path(ticket)
-        td = link_to 'Close', ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch if ticket.is_open?
+        td = link_to 'Respond', ticket_respond_path(ticket) if ticket.is_open?
+        - if ticket.is_open?
+          td = link_to 'Close', ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
+        - else
+          td = link_to 'Reopen', ticket_open_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
 
 br
 

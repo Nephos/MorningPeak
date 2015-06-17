@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_ticket_custom_route, only: [:close, :respond]
+  before_action :set_ticket_custom_route, only: [:close, :open, :respond]
 
   # GET /tickets
   # GET /tickets.json
@@ -11,10 +11,22 @@ class TicketsController < ApplicationController
   def close
     respond_to do |format|
       if @ticket.close
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully closed.' }
+        format.html { redirect_to tickets_url, notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
-        format.html { render :edit }
+        format.html { render :index }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def open
+    respond_to do |format|
+      if @ticket.open
+        format.html { redirect_to tickets_url, notice: 'Ticket was successfully reopened.' }
+        format.json { render :show, status: :ok, location: @ticket }
+      else
+        format.html { render :index }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
