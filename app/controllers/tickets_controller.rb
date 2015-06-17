@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket_custom_route, only: [:close, :open, :respond]
+  before_action :authenticate_admin!
 
   # GET /tickets
   # GET /tickets.json
