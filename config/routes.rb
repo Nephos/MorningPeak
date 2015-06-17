@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
+  # ADMINISTRATION
   resources :tickets do
     patch :close # TODO: for now, argument is ticket_id instead of id. How to change that ?
     patch :open
@@ -12,13 +13,25 @@ Rails.application.routes.draw do
   resources :contacts
   resources :bills
   resources :clients do
-    resources :contacts
-    resources :bills
-    resources :tickets
+    # resources :contacts
+    # resources :bills
+    # resources :tickets do
+    #   patch :close
+    #   patch :open
+    #   get :respond
+    # end
   end
 
   devise_for :users
   devise_for :admins
+
+  # CLIENTS
+  resources :client_tickets, path: '/client/tickets' do
+    patch :close
+    patch :open
+    get :respond
+  end
+  resource :client_bills, path: '/client/bills'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

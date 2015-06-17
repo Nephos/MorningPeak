@@ -1,6 +1,7 @@
 class CreateBills < ActiveRecord::Migration
   def change
     create_table :bills do |t|
+
       t.belongs_to :client, index: true, foreign_key: true
       t.string :title, null: false
       t.text :description

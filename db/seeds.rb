@@ -1,5 +1,5 @@
 # coding: utf-8
-a1 = Admin.create(email: "admin@wir.com", password: 'wir2015')
+u1 = Admin.create(email: "admin@wir.com", password: 'wir2015')
 u2 = User.create(email: "admin@jerevedunemaison.com", password: 'jrdm2015')
 u3 = User.create(email: "admin@rasecampagneimmo.com", password: 'rci2015')
 
@@ -21,6 +21,8 @@ b4=Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today+
 b5=Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today-1, client: c3, emission_date: Date.today-14, paid: true)
 b6=Bill.create(title: "Intervention serveur", amount: 200, due_date: Date.today-1, client: c3, emission_date: Date.today-14)
 b7=Bill.create(title: "Mise en place d'API", amount: 2000, due_date: Date.today+31, client: c3, emission_date: Date.today)
-t1=Ticket.create(title: "Pas possible d'éditer la page d'acceuil", bill: b1, client: c3)
-t1=Ticket.create(title: "Vous avez supprimé une page. Elle a été remise en place gratuitement.", bill: b1, client: c3, ticket: t1)
-t1=Ticket.create(title: "Erreur API: 505.", description: "Impossible de se co à l'api, erreur 505.", client: c2)
+
+t1=Ticket.create(title: "Pas possible d'éditer la page d'acceuil", creator: u3)
+t2=Ticket.create(title: "Vous avez supprimé une page. Elle a été remise en place gratuitement.", creator: u1, ticket: t1)
+t3=Ticket.create(title: "Erreur API: 505.", description: "Impossible de se co à l'api, erreur 505.", creator: u2)
+t3=Ticket.create(title: "Erreur API: 505", description: "Vérifiez les mots de passe (renvoyé par mail).", creator: u1, ticket: t3)

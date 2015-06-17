@@ -7,4 +7,7 @@ class Admin < ActiveRecord::Base
          :rememberable#,
          #:trackable,
          #:validatable
+
+  has_many :tickets, as: :creator
+
 end

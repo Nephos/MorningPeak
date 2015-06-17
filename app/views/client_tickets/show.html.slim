@@ -2,7 +2,7 @@ p#notice = notice
 
 p
   strong Réponse à:
-  = link_to @ticket.head.title, @ticket.head
+  = link_to @ticket.head.title, client_ticket_path(@ticket.head)
 
 p
   strong State:
@@ -33,26 +33,26 @@ table.table.table-condensed.table-striped
       th Last update
       th
       th
-      th
+      / th
 
   tbody
     - @ticket.tickets.each do |ticket|
       tr
         td = link_to_creator(ticket)
-        td = link_to ticket.title, ticket
+        td = link_to ticket.title, client_ticket_path(ticket)
         td = ticket.description
         - if ticket.state == Ticket::CLOSE
           td.bg-danger = ticket.state
         - else
           td.bg-success = ticket.state
         td = ticket.updated_at.to_s(:long)
-        td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_ticket_path(ticket)
-        td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Show', client_ticket_path(ticket)
+        td = link_to 'Edit', edit_client_ticket_path(ticket)
+        / td = link_to 'Destroy', client_ticket_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
 
-= link_to 'Respond', ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
-= link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-sm btn-default'
-= link_to 'Back', tickets_path, class: 'btn btn-sm btn-default'
+= link_to 'Respond', client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to 'Edit', edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to 'Back', client_tickets_path, class: 'btn btn-sm btn-default'

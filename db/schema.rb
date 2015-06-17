@@ -17,18 +17,19 @@ ActiveRecord::Schema.define(version: 20150617201020) do
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",      null: false
+    t.string   "name",                   default: "admin"
+    t.string   "encrypted_password",     default: "",      null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,       null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -77,18 +78,17 @@ ActiveRecord::Schema.define(version: 20150617201020) do
   add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
 
   create_table "tickets", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "bill_id"
+    t.integer  "creator_id"
+    t.string   "creator_type"
     t.integer  "ticket_id"
     t.string   "title"
     t.text     "description"
-    t.string   "state",       default: "open", null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "state",        default: "open", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
-  add_index "tickets", ["bill_id"], name: "index_tickets_on_bill_id", using: :btree
-  add_index "tickets", ["client_id"], name: "index_tickets_on_client_id", using: :btree
+  add_index "tickets", ["creator_type", "creator_id"], name: "index_tickets_on_creator_type_and_creator_id", using: :btree
   add_index "tickets", ["ticket_id"], name: "index_tickets_on_ticket_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -111,7 +111,5 @@ ActiveRecord::Schema.define(version: 20150617201020) do
 
   add_foreign_key "bills", "clients"
   add_foreign_key "contacts", "clients"
-  add_foreign_key "tickets", "bills"
-  add_foreign_key "tickets", "clients"
   add_foreign_key "tickets", "tickets"
 end

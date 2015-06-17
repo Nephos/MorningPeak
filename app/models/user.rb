@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
          :trackable#,
          #:validatable
   has_one :client
+  delegate :name, to: :client
+  has_many :tickets, as: :creator
 
   after_create :create_client
   def create_client

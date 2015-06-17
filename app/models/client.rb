@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
   has_many :contacts
   has_many :bills
-  has_many :tickets
+  has_many :tickets, through: :user
   belongs_to :contact
   belongs_to :user
 

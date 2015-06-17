@@ -1,6 +1,7 @@
 class CreateContacts < ActiveRecord::Migration
   def change
     create_table :contacts do |t|
+
       t.belongs_to :client, index: true, foreign_key: true
       t.string :name
       t.string :phone
