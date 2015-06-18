@@ -28,6 +28,12 @@ html
               = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
               = link_to "logout", destroy_admin_session_path, method: :delete, class: 'btn btn-lg btn-default narbar-btn'
 
+    #infos
+      - if alert
+        #alert.alert.bg-danger = alert
+      - if notice
+        #notice.notice.bg-warning = notice
+
     .yield
       .container-fluid
         = yield

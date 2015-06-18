@@ -40,7 +40,7 @@ class ClientTicketsController < ApplicationController
                          title: @ticket.title)
     if @ticket.close? or @ticket.head.close?
       respond_to do |format|
-        format.html { redirect_to tickets_url }
+        format.html { redirect_to :back, alert: 'the ticket is closed' }
         format.json { render json: {ticket: 'the ticket is closed'}, status: :unprocessable_entity }
       end
     else
