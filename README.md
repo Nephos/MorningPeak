@@ -36,14 +36,16 @@ The server will be accessible via [localhost](http://localhost:3000)
 # Organisation MVC
 
 Guide documentation : [visit](http://guides.rubyonrails.org/)
+
 The RoR Project works with some main parts :
 
-- /config/routes.rb : the routing. The url accessible from http://... will call a Controller.method
-- /app/controllers/* : the controllers. they act from the parameters from the calling url
-- /app/models/* : the modelisation of the database
-- /app/views/*/* : the views rendered after the controller
-- /db/migrate/* : the migrations. They represents the state of the databases
-- /app/assets/ : all stylesheets css, javascript, images
+- __/config/routes.rb__ : the routing. The url accessible from http://... will call a Controller.method
+- __/app/controllers/*__ : the controllers. they act from the parameters from the calling url
+- __/app/models/*__ : the modelisation of the database
+- __/app/views/*/*__ : the views rendered after the controller
+- __/db/migrate/*__ : the migrations. They represents the state of the databases
+- __/app/assets/__ : all stylesheets css, javascript, images
 
 # Contributors
+
 - poulet_a (as lead)
