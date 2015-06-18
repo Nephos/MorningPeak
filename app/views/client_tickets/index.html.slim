@@ -14,7 +14,6 @@ table.table.table-condensed.table-striped
       th
       th
       th
-      th
 
   tbody
     - @tickets.each do |ticket|
@@ -31,7 +30,7 @@ table.table.table-condensed.table-striped
         td = ticket.last_response ? distance_of_time_in_words_to_now(ticket.last_response.updated_at) : "never"
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_client_ticket_path(ticket)
-        td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
+        / td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
         td = link_to 'Respond', ticket_respond_path(ticket) if ticket.open?
         - if ticket.open?
           td = link_to 'Close', client_ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
