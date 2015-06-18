@@ -3,15 +3,17 @@ h1 Listing clients
 table.table.table-condensed.table-striped
   thead
     tr
+      td ID
       th Name
       th Url
       th Activity
       th Contact reasons
       th Last Contact
       th Contact
-      td Financial Quality
+      th Financial Quality
       th Retard
       th Weight
+      th Next
       th
       th
       th
@@ -19,6 +21,7 @@ table.table.table-condensed.table-striped
   tbody
     - @clients.each do |client|
       tr
+        td = client.id
         td = link_to client.name, client
         td = client.url
         td = client.activity
@@ -28,6 +31,7 @@ table.table.table-condensed.table-striped
         td = client.financial_level
         td = client.retard
         td = client.weight
+        td = client.next
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete

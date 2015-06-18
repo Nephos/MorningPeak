@@ -1,6 +1,10 @@
 p#notice = notice
 
 p
+  strong
+    | Id: #
+    = @ticket.id
+p
   strong Réponse à:
   = link_to @ticket.head.title, @ticket.head
 

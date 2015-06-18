@@ -42,4 +42,8 @@ class Client < ActiveRecord::Base
     bills_retard.pluck(:amount).sum
   end
 
+  def next
+    bills_next.pluck(:amount).sum
+  end
+
 end

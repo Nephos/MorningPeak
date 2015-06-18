@@ -3,6 +3,7 @@ h1 Listing contacts
 table.table.table-condensed.table-striped
   thead
     tr
+      td ID
       th Client
       th Name
       th Phone
@@ -20,6 +21,7 @@ table.table.table-condensed.table-striped
   tbody
     - @contacts.each do |contact|
       tr
+        td = contact.id
         td = link_to contact.client.name, contact.client
         td = link_to contact.name, contact
         td = contact.phone

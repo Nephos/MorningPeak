@@ -3,6 +3,7 @@ h1 Listing bills
 table.table.table-condensed.table-striped
   thead
     tr
+      td ID
       th Title
       th Description
       th Amount
@@ -16,6 +17,7 @@ table.table.table-condensed.table-striped
   tbody
     - @bills.each do |bill|
       tr
+        td = link_to("##{bill.id}", client_bill_path(bill))
         td = link_to bill.title, client_bill_path(bill)
         td = bill.description
         td = bill.amount
