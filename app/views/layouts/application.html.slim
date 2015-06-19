@@ -15,13 +15,13 @@ html
         .navbar-collapse.collapse
           - if user_signed_in?
             .nav.navbar-nav.navbar-left
-              | #{current_user.name} 
+              | Espace Client #{current_user.name} 
               = link_to "bills", client_bills_url, class: 'btn btn-lg btn-success narbar-btn'
               = link_to "tickets", client_tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
               = link_to "logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-default narbar-btn'
           - if admin_signed_in?
             .nav.navbar-nav.navbar-right
-              | #{current_admin.email} 
+              | Espace Admin #{current_admin.email} 
               = link_to "clients", clients_url, class: 'btn btn-lg btn-primary narbar-btn'
               = link_to "contacts", contacts_url, class: 'btn btn-lg btn-info narbar-btn'
               = link_to "bills", bills_url, class: 'btn btn-lg btn-success narbar-btn'
