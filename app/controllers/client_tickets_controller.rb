@@ -74,7 +74,7 @@ class ClientTicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
         @ticket.close_head if @ticket.close?
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: client_tickets_url(@ticket) }
       else
         format.html { render :new }
