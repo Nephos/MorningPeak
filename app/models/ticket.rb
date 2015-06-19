@@ -18,7 +18,7 @@ class Ticket < ActiveRecord::Base
   before_save :check_creator
   def check_creator
     return true if CREATORS.include? creator_type
-    errors.add "#{creator_type} is not in the list of the possible creators list"
+    errors[:base] << "#{creator_type} is not in the list of the possible creators list"
     raise ActiveRecord::RecordInvalid.new(self)
   end
 
@@ -33,7 +33,7 @@ class Ticket < ActiveRecord::Base
 
   def close
     if close?
-      errors.add "Already close"
+      errors[:base] << "Already close"
       return false
     end
     head.update(state: Ticket::CLOSE) && update(state: Ticket::CLOSE)
@@ -41,7 +41,7 @@ class Ticket < ActiveRecord::Base
 
   def close_head
     if head.close?
-      errors.add "Already close"
+      errors[:base] << "Already close"
       return false
     end
     head.update(state: Ticket::CLOSE)
@@ -49,7 +49,7 @@ class Ticket < ActiveRecord::Base
 
   def open
     if open?
-      errors.add "Already open"
+      errors[:base] << "Already open"
       return false
     end
     head.update(state: Ticket::OPEN) && update(state: Ticket::OPEN)
