@@ -13,6 +13,7 @@ class TicketsController < ApplicationController
   def close
     respond_to do |format|
       if @ticket.close
+        @ticket.update(admin_view_at: Time.now)
         format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -25,6 +26,7 @@ class TicketsController < ApplicationController
   def open
     respond_to do |format|
       if @ticket.open
+        @ticket.update(head_creator_view_at: nil)
         format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully reopened.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
