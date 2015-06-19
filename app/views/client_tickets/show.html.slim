@@ -54,7 +54,10 @@ table.table.table-condensed.table-striped
 
 br
 
-
-= link_to 'Respond', client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
+- if @ticket.open?
+  = link_to 'Respond', client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
+  = link_to 'Close', client_ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
+- else
+  = link_to 'Reopen', client_ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
 = link_to 'Edit', edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
 = link_to 'Back', client_tickets_path, class: 'btn btn-sm btn-default'

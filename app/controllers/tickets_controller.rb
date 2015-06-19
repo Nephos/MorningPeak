@@ -12,10 +12,10 @@ class TicketsController < ApplicationController
   def close
     respond_to do |format|
       if @ticket.close
-        format.html { redirect_to tickets_url, notice: 'Ticket was successfully closed.' }
+        format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
-        format.html { render :index }
+        format.html { redirect_to ticket_url(@ticket), alert: 'The ticket is already close' }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
@@ -24,22 +24,23 @@ class TicketsController < ApplicationController
   def open
     respond_to do |format|
       if @ticket.open
-        format.html { redirect_to tickets_url, notice: 'Ticket was successfully reopened.' }
+        format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully reopened.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
-        format.html { render :index }
+        format.html { redirect_to ticket_url(@ticket), alert: 'The ticket is already open' }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def respond
-    @ticket = Ticket.new(ticket_id: @ticket.head.id,
+    @head = @ticket.head
+    @ticket = Ticket.new(ticket_id: @head.id,
                          creator: current_admin,
                          title: @ticket.title)
-    if @ticket.close? or @ticket.head.close?
+    if @ticket.close? or @head.close?
       respond_to do |format|
-        format.html { redirect_to :back, alert: 'the ticket is closed' }
+        format.html { redirect_to ticket_url(@head), alert: 'the ticket is closed' }
         format.json { render json: {ticket: 'the ticket is closed'}, status: :unprocessable_entity }
       end
     else

@@ -12,10 +12,10 @@ class ClientTicketsController < ApplicationController
   def close
     respond_to do |format|
       if @ticket.close
-        format.html { redirect_to tickets_url, notice: 'Ticket was successfully closed.' }
+        format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: client_tickets_url(@ticket) }
       else
-        format.html { render :index }
+        format.html { redirect_to client_ticket_url(@ticket), alert: 'The ticket is already close' }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
@@ -24,10 +24,10 @@ class ClientTicketsController < ApplicationController
   def open
     respond_to do |format|
       if @ticket.open
-        format.html { redirect_to tickets_url, notice: 'Ticket was successfully reopened.' }
+        format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully reopened.' }
         format.json { render :show, status: :ok, location: client_tickets_url(@ticket) }
       else
-        format.html { render :index }
+        format.html { redirect_to client_ticket_url(@ticket), alert: 'The ticket is already open' }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
@@ -35,13 +35,14 @@ class ClientTicketsController < ApplicationController
 
   def respond
     session[:user_ticket_respond_parent_id] = @ticket.id
-    @ticket = Ticket.new(ticket_id: @ticket.head.id,
+    @head = @ticket.head
+    @ticket = Ticket.new(ticket_id: @head.id,
                          creator: current_user,
                          title: @ticket.title)
-    if @ticket.close? or @ticket.head.close?
+    if @ticket.close? or @head.close?
       respond_to do |format|
-        format.html { redirect_to :back, alert: 'the ticket is closed' }
-        format.json { render json: {ticket: 'the ticket is closed'}, status: :unprocessable_entity }
+        format.html { redirect_to client_ticket_url(@head), alert: 'The ticket is closed' }
+        format.json { render json: {ticket: 'The ticket is closed'}, status: :unprocessable_entity }
       end
     else
       render :new
