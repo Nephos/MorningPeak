@@ -30,9 +30,15 @@ html
 
     #infos
       - if alert
-        #alert.alert.bg-danger = alert
+        #alert.alert.bg-danger
+          span.glyphicon.glyphicon-exclamation-sign aria-hidden="true"
+          span.sr-only Error:
+          = " #{alert}"
       - if notice
-        #notice.notice.bg-warning = notice
+        #notice.alert.bg-warning
+          span.glyphicon.glyphicon-info-sign aria-hidden="true"
+          span.sr-only Error:
+          = " #{notice}"
 
     .yield
       .container-fluid
