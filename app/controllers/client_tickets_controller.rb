@@ -1,7 +1,7 @@
 class ClientTicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :looks_ticket, only: [:show, :edit, :update, :close, :open]
   before_action :set_ticket_custom_route, only: [:close, :open, :respond]
+  before_action :looks_ticket, only: [:show, :edit, :update, :close, :open]
   before_action :authenticate_user!
 
   # GET /tickets

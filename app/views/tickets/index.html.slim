@@ -1,6 +1,6 @@
 h1 Listing tickets
 
-table.table.table-condensed.table-striped
+table.table.table-condensed.
   thead
     tr
       td ID
@@ -18,7 +18,7 @@ table.table.table-condensed.table-striped
 
   tbody
     - @tickets.each do |ticket|
-      tr
+      tr class="#{ticket.admin_view_at.nil? ? 'bg-warning' : ''}"
         td = link_to("##{ticket.id}", ticket)
         td = link_to_creator(ticket)
         td = link_to ticket.title, ticket
