@@ -83,9 +83,11 @@ ActiveRecord::Schema.define(version: 20150617201020) do
     t.integer  "ticket_id"
     t.string   "title"
     t.text     "description"
-    t.string   "state",        default: "open", null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "state",                default: "open", null: false
+    t.time     "admin_view_at"
+    t.time     "head_creator_view_at"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "tickets", ["creator_type", "creator_id"], name: "index_tickets_on_creator_type_and_creator_id", using: :btree

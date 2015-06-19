@@ -17,7 +17,9 @@ html
             .nav.navbar-nav.navbar-left
               | Espace Client #{current_user.name} 
               = link_to "bills", client_bills_url, class: 'btn btn-lg btn-success narbar-btn'
-              = link_to "tickets", client_tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
+              = link_to client_tickets_url, class: 'btn btn-lg btn-warning narbar-btn' do
+                | tickets
+                .badge = user_tickets_unview_count
               = link_to "logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-default narbar-btn'
           - if admin_signed_in?
             .nav.navbar-nav.navbar-right
@@ -25,7 +27,9 @@ html
               = link_to "clients", clients_url, class: 'btn btn-lg btn-primary narbar-btn'
               = link_to "contacts", contacts_url, class: 'btn btn-lg btn-info narbar-btn'
               = link_to "bills", bills_url, class: 'btn btn-lg btn-success narbar-btn'
-              = link_to "tickets", tickets_url, class: 'btn btn-lg btn-warning narbar-btn'
+              = link_to tickets_url, class: 'btn btn-lg btn-warning narbar-btn' do
+                | tickets
+                .badge = admin_tickets_unview_count
               = link_to "logout", destroy_admin_session_path, method: :delete, class: 'btn btn-lg btn-default narbar-btn'
 
     #infos

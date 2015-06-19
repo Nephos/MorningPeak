@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
     update(client: Client.create(name: email.gsub(/@.+/, '')))
   end
 
+  def tickets_unview
+    tickets.heads.where(head_creator_view_at: nil)
+  end
+
 end

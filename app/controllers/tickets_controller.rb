@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :looks_ticket, only: [:show, :edit, :update, :close, :open]
   before_action :set_ticket_custom_route, only: [:close, :open, :respond]
   before_action :authenticate_admin!
 
@@ -106,18 +107,27 @@ class TicketsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
-      @ticket = Ticket.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ticket
+    @ticket = Ticket.find(params[:id])
+  end
 
-    def set_ticket_custom_route
-      @ticket = Ticket.find(params[:ticket_id])
-    end
+  def set_ticket_custom_route
+    @ticket = Ticket.find(params[:ticket_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ticket_params
-      params.require(:ticket).permit(:ticket_id, :title, :description, :state)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ticket_params
+    params.require(:ticket).permit(:ticket_id, :title, :description, :state)
+  end
+
+  def looks_ticket
+    if @ticket.head.admin_view_at.nil?
+      @ticket.head.update(admin_view_at: Time.now)
     end
+    Ticket.where(creator: current_admin, admin_view_at: nil, ticket: @ticket.head).each do |t|
+      t.update(admin_view_at: Time.now)
+    end
+  end
 
 end

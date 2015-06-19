@@ -1,3 +1,4 @@
+# coding: utf-8
 class Ticket < ActiveRecord::Base
 
   OPEN = 'open'
@@ -22,13 +23,39 @@ class Ticket < ActiveRecord::Base
     raise ActiveRecord::RecordInvalid.new(self)
   end
 
+  after_create :looks_views
+  def looks_views
+    if creator_type == 'Admin'
+      # Entre admin pas de soucis
+      if head.creator_type == 'Admin'
+        update(admin_view_at: Time.now, head_creator_view_at: Time.now)
+      # Réponse à un client, mise a jour pour notification
+      else
+        update(admin_view_at: Time.now, head_creator_view_at: nil)
+        head.update(admin_view_at: Time.now, head_creator_view_at: nil)
+      end
+    else
+      # Reponse client, mise a jour pour notification
+      if head?
+        update(admin_view_at: nil, head_creator_view_at: Time.now)
+      else
+        update(admin_view_at: nil, head_creator_view_at: Time.now)
+        head.update(admin_view_at: nil, head_creator_view_at: Time.now)
+      end
+    end
+  end
+
   def last_response
     head.tickets.last
   end
 
   def head
-    return self if not ticket
+    return self if head?
     return ticket.head
+  end
+
+  def head?
+    ticket.nil?
   end
 
   def close

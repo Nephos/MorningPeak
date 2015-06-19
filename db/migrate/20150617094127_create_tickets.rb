@@ -9,6 +9,9 @@ class CreateTickets < ActiveRecord::Migration
       t.text :description
       t.string :state, default: "open", null: false
 
+      t.time :admin_view_at
+      t.time :head_creator_view_at
+
       t.timestamps null: false
     end
   end
