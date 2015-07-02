@@ -1,20 +1,21 @@
+h1 = t '.page.title'
 p
-  strong Title:
+  strong = t ".title"
   = @bill.title
 p
-  strong Description:
+  strong = t ".description"
   = @bill.description
 p
-  strong Amount:
+  strong = t ".amount"
   = @bill.amount
 p
-  strong Paid:
+  strong = t ".paid"
   = @bill.paid
 p
-  strong Emission date:
+  strong = t ".emission_date"
   = @bill.emission_date
 p
-  strong Due date:
+  strong = t ".due_date"
   - if @bill.due_date < Date.today
     - if @bill.paid
       .bg-success = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)

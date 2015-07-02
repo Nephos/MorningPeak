@@ -1,0 +1,43 @@
+fr:
+  client_bills:
+    show:
+      title: Titre
+      description: Description
+      amount: Montant
+      paid: Payé ?
+      emission_date: "Date d'emission"
+      due_date: "Date d'échéance"
+      page:
+        title: Afficher une facture
+    index:
+      id: id
+      title: Titre
+      description: Description
+      amount: Montant
+      paid: Payé ?
+      emission_date: "Date d'emission"
+      due_date: "Date d'échéance"
+      page:
+        title: Liste des factures
+
+en:
+  client_bills:
+    index:
+      id: id
+      title: Title
+      description: Description
+      amount: Amount
+      paid: Paid ?
+      emission_date: Emission date
+      due_date: Due date
+      page:
+        title: Bills list
+    show:
+      title: Title
+      description: Description
+      amount: Amount
+      paid: Paid ?
+      emission_date: Emission date
+      due_date: Due date
+      page:
+        title: Show one Bill
