@@ -1,15 +1,15 @@
-h1 Listing tickets
+h1 = t ".page.title"
 
 table.table.table-condensed
   thead
     tr
       td ID
-      th Creator
-      th Title
-      th Description
-      th State
-      th Last update
-      th Last response
+      th = t ".creator"
+      th = t ".title"
+      th = t ".description"
+      th = t ".state"
+      th = t ".last_update"
+      th = t ".last_response"
       th
       th
       th
@@ -23,20 +23,20 @@ table.table.table-condensed
         td = link_to ticket.title, client_ticket_path(ticket)
         td = ticket.description
         - if ticket.state == Ticket::CLOSE
-          td.bg-danger = ticket.state
+          td.bg-danger = t ".states.close"
         - else
-          td.bg-success = ticket.state
+          td.bg-success = t ".states.open"
         td = ticket.updated_at.to_s(:long)
         td = ticket.last_response ? distance_of_time_in_words_to_now(ticket.last_response.updated_at) : "never"
-        td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_client_ticket_path(ticket)
+        td = link_to (t ".buttons.show"), ticket
+        td = link_to (t ".buttons.edit"), edit_client_ticket_path(ticket)
         / td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to 'Respond', ticket_respond_path(ticket) if ticket.open?
+        td = link_to (t ".buttons.respond"), ticket_respond_path(ticket) if ticket.open?
         - if ticket.open?
-          td = link_to 'Close', client_ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
+          td = link_to (t ".buttons.close"), client_ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
         - elsif ticket.close?
-          td = link_to 'Reopen', client_ticket_open_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
+          td = link_to (t ".buttons.reopen"), client_ticket_open_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
 
 br
 
-= link_to 'New Ticket', new_client_ticket_path, class: 'btn btn-sm btn-default'
+= link_to (t ".buttons.new"), new_client_ticket_path, class: 'btn btn-sm btn-default'

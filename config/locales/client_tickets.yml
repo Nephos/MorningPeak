@@ -1,0 +1,67 @@
+fr:
+  client_tickets:
+    show:
+      title: Titre
+      respond_to: Réponse à
+      state: État
+      states:
+        close: Fermé
+        open: Ouvert
+      creator: Créateur
+      description: Description
+      page:
+        title: Afficher un Ticket
+    index:
+      title: Titre
+      respond_to: Réponse à
+      state: État
+      states:
+        close: Fermé
+        open: Ouvert
+      creator: Créateur
+      description: Description
+      last_update: Dernière mise à jour
+      last_response: Dernière réponse
+      buttons:
+        show: Afficher
+        edit: Éditer
+        respond: Répondre
+        close: Fermer
+        reopen: Ré-ouvrir
+        new: Créer un nouveau Ticket
+      page:
+        title: Liste de mes Tickets
+
+en:
+  client_tickets:
+    show:
+      title: Title
+      respond_to: Repond to
+      state: state
+      states:
+        close: Fermé
+        open: Ouvert
+      creator: Créateur
+      description: Description
+      page:
+        title: Afficher un Ticket
+    index:
+      title: Titre
+      respond_to: Réponse à
+      state: state
+      states:
+        close: Closed
+        open: Opened
+      creator: Creator
+      description: Description
+      last_update: Last update
+      last_response: Last Response
+      buttons:
+        show: Show
+        edit: Edit
+        respond: Repond
+        close: Close
+        reopen: Reopen
+        new: New Ticket
+      page:
+        title: My Tickets list
