@@ -3,61 +3,58 @@ p
     | Id: #
     = @ticket.id
 p
-  strong Réponse à:
+  strong = t ".respond_to"
   = link_to @ticket.head.title, client_ticket_path(@ticket.head)
 
 p
-  strong State:
+  strong = t ".state"
   - if @ticket.head.state == Ticket::CLOSE
-    td.bg-danger = @ticket.head.state
+    td.bg-danger = t ".states.close"
   - else
-    td.bg-success = @ticket.head.state
+    td.bg-success = t ".states.open"
 
 p
-  strong Creator:
+  strong = t ".creator"
   = link_to_creator @ticket
 p
-  strong Title:
+  strong = t ".title"
   = @ticket.title
 p
-  strong Description:
+  strong = t ".description"
   = @ticket.description
-p
-  strong State:
-  = @ticket.state
 
-table.table.table-condensed.
-  thead
-    tr
-      th Creator
-      th Title
-      th Description
-      th Last update
-      th
-      th
-      / th
-
-  tbody
-    - @ticket.tickets.each do |ticket|
+- if not @ticket.tickets.empty?
+  table.table.table-condensed.
+    thead
       tr
-        td = link_to_creator(ticket)
-        td = link_to ticket.title, client_ticket_path(ticket)
-        td = ticket.description
-        - if ticket.state == Ticket::CLOSE
-          td.bg-danger = ticket.state
-        - else
-          td.bg-success = ticket.state
-        td = ticket.updated_at.to_s(:long)
-        td = link_to 'Show', client_ticket_path(ticket)
-        td = link_to 'Edit', edit_client_ticket_path(ticket)
-        / td = link_to 'Destroy', client_ticket_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :delete
+        th = t ".creator"
+        th = t ".title"
+        th = t ".description"
+        th = t ".last_update"
+        th
+        th
+        / th
+
+    tbody
+      - @ticket.tickets.each do |ticket|
+        tr
+          td = link_to_creator(ticket)
+          td = link_to ticket.title, client_ticket_path(ticket)
+          td = ticket.description
+          - if ticket.state == Ticket::CLOSE
+            td.bg-danger = ticket.state
+          - else
+            td.bg-success = ticket.state
+          td = ticket.updated_at.to_s(:long)
+          td = link_to (t ".buttons.show"), client_ticket_path(ticket)
+          td = link_to (t ".buttons.edit"), edit_client_ticket_path(ticket)
 
 br
 
 - if @ticket.open?
-  = link_to 'Respond', client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
-  = link_to 'Close', client_ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
+  = link_to (t '.buttons.respond'), client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
+  = link_to (t '.buttons.close'), client_ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
 - else
-  = link_to 'Reopen', client_ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
-= link_to 'Edit', edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
-= link_to 'Back', client_tickets_path, class: 'btn btn-sm btn-default'
+  = link_to (t '.buttons.reopen'), client_ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
+= link_to (t '.buttons.edit'), edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to (t '.buttons.back'), client_tickets_path, class: 'btn btn-sm btn-default'

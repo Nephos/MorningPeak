@@ -9,6 +9,14 @@ fr:
         open: Ouvert
       creator: Créateur
       description: Description
+      buttons:
+        show: Afficher
+        edit: Éditer
+        respond: Répondre
+        close: Fermer
+        reopen: Ré-ouvrir
+        new: Créer un nouveau Ticket
+        back: "Revenir à l'index"
       page:
         title: Afficher un Ticket
     index:
@@ -43,6 +51,14 @@ en:
         open: Ouvert
       creator: Créateur
       description: Description
+      buttons:
+        show: Show
+        edit: Edit
+        respond: Repond
+        close: Close
+        reopen: Reopen
+        new: New Ticket
+        back: Back
       page:
         title: Afficher un Ticket
     index:
