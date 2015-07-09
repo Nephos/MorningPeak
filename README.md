@@ -8,7 +8,7 @@
 ## Initialization
 
 ```bash
-cd Appli/
+cd MorningPeak/
 gem install bundler
 bundle install
 cp config/database.yml.example config/database.yml
