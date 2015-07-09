@@ -90,4 +90,12 @@ class Ticket < ActiveRecord::Base
     state == CLOSE
   end
 
+  def short_description
+    if description.size > 100
+      description[0..97] + "..."
+    else
+      description
+    end
+  end
+
 end

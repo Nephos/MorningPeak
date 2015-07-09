@@ -4,10 +4,12 @@ p
     = @ticket.id
 p
   strong = t ".respond_to"
+  |: 
   = link_to @ticket.head.title, client_ticket_path(@ticket.head)
 
 p
   strong = t ".state"
+  |: 
   - if @ticket.head.state == Ticket::CLOSE
     td.bg-danger = t ".states.close"
   - else
@@ -15,13 +17,17 @@ p
 
 p
   strong = t ".creator"
-  = link_to_creator @ticket
+  |: 
+  span.ticket-creator = link_to_creator @ticket
 p
   strong = t ".title"
+  |: 
   = @ticket.title
 p
   strong = t ".description"
-  = @ticket.description
+  |: 
+  .container-fluid.ticket-description
+    = @ticket.description
 
 - if not @ticket.tickets.empty?
   table.table.table-condensed.
@@ -40,7 +46,7 @@ p
         tr
           td = link_to_creator(ticket)
           td = link_to ticket.title, client_ticket_path(ticket)
-          td = ticket.description
+          td = ticket.short_description
           - if ticket.state == Ticket::CLOSE
             td.bg-danger = ticket.state
           - else
