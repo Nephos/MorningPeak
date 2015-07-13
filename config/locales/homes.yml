@@ -1,0 +1,29 @@
+fr:
+  home:
+    index:
+      client:
+        title: Espace Client
+        links:
+          login: Se connecter
+          logout: Se déconnecter
+
+      admin:
+        title: Espace Admin
+        links:
+          login: Se connecter
+          logout: Se déconnecter
+
+en:
+  home:
+    index:
+      client:
+        title: Client Dashboard
+        links:
+          login: Sign in
+          logout: Sign out
+
+      admin:
+        title: Admin Dashboard
+        links:
+          login: Sign in
+          logout: Sign out

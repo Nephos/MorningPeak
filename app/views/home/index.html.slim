@@ -3,18 +3,18 @@
     .space-client.col-xs-4
       .panel.panel-success
         .panel-heading
-          h3 Se connecter comme client
+          h3 = t ".client.title"
         .panel-body
           - if user_signed_in?
-            = link_to "Log out", destroy_user_session_path, method: :delete
+            = link_to t(".client.links.logout"), destroy_user_session_path, method: :delete
           - else
-            = link_to "Log in", new_user_session_path
+            = link_to t(".client.links.login"), new_user_session_path
     .space-admin.col-xs-4
       .panel.panel-danger
         .panel-heading
-          h3 Se connecter comme admin
+          h3 = t(".admin.title")
         .panel-body
           - if admin_signed_in?
-            = link_to "Log out", destroy_admin_session_path, method: :delete
+            = link_to t(".admin.links.logout"), destroy_admin_session_path, method: :delete
           - else
-            = link_to "Log in", new_admin_session_path
+            = link_to t(".admin.links.login"), new_admin_session_path
