@@ -24,8 +24,7 @@ html
               li = link_to "#{current_user.name} logout", destroy_user_session_path, method: :delete
             - if admin_signed_in?
               li = link_to "#{current_admin.email} logout", destroy_admin_session_path, method: :delete
-            li
-              a href="#" Help
+            li = link_to "Help", help_url
 
     .container-fluid
       .row
@@ -37,10 +36,12 @@ html
                 = link_to users_dashboard_url do
                   | User
                   span.sr-only (current)
-              li = link_to "bills", client_bills_url
+              li = link_to client_bills_url do
+                | bills due 
+                .badge = user_bills_count_due
               li = link_to client_tickets_url do
-                     | tickets 
-                     .badge = user_tickets_unview_count
+                | tickets 
+                .badge = user_tickets_unview_count
 
           / Admin side
           - if admin_signed_in?

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "home#index"
+  match "/help", to: "home#help", via: [:get], as: 'help'
 
   # ADMINISTRATION
   resources :tickets do
