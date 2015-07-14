@@ -1,3 +1,11 @@
+# What is this application
+
+![Screenshot of dashboard](https://transfer.sh/uQ57h/morningpeak-screenshot.png)
+
+Morning Peak is a modern opensource web application.
+The application is designed to manage your clients, bills, and issues.
+
+
 # Installation
 
 ## Requirements
