@@ -4,13 +4,13 @@ h1.page-header Admin Dashboard
   .col-xs-6.col-sm-3.placeholder
     = image_tag "icone_client.png", alt: "image clients", class: "img-responsive", size: "128x128"
     h4 Clients
-    span.text-muted = "Number: #{@clients_count}"
+    span.text-muted = "Count: #{@clients_count}"
     br
 
   .col-xs-6.col-sm-3.placeholder
     = image_tag "icone_contact.png", alt: "image contact", class: "img-responsive", size: "128x128"
     h4 Contacts
-    span.text-muted = "Number: #{@contacts_count}"
+    span.text-muted = "Count: #{@contacts_count}"
     br
     span.text-muted = "Client with no contacts: #{@no_client_contacts_count}"
     br
