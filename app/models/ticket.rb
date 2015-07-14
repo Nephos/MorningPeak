@@ -1,10 +1,17 @@
 # coding: utf-8
 class Ticket < ActiveRecord::Base
+  # WARNING ! IT REVERSE LAST / FIRST
+  default_scope { order('created_at DESC') }
 
   OPEN = 'open'
   CLOSE = 'close'
 
   CREATORS = ['Admin', 'User']
+
+  validates :state, inclusion: {in: [OPEN, CLOSE]}
+  # validates :creator, inclusion: {in: CREATORS}
+  validates :title, length: {in: 7..32}
+  validates :description, length: {minimum: 25}
 
   belongs_to :creator, polymorphic: true
   delegate :name, to: :creator, prefix: true

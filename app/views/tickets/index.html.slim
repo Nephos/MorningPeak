@@ -22,7 +22,7 @@ table.table.table-condensed.
         td = link_to("##{ticket.id}", ticket)
         td = link_to_creator(ticket)
         td = link_to ticket.title, ticket
-        td = ticket.description
+        td = ticket.tickets.empty? ? ticket.description : ticket.tickets.first.description
         - if ticket.state == Ticket::CLOSE
           td.bg-danger = ticket.state
         - else

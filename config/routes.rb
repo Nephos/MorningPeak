@@ -13,15 +13,7 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :bills
-  resources :clients do
-    # resources :contacts
-    # resources :bills
-    # resources :tickets do
-    #   patch :close
-    #   patch :open
-    #   get :respond
-    # end
-  end
+  resources :clients
 
   devise_for :users
   match "/users/dashboard", to: 'home#user_dashboard', via: [:get], as: 'users_dashboard'

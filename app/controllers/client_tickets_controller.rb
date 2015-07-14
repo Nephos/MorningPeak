@@ -70,11 +70,10 @@ class ClientTicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-    ##############
-    # this is a tmp decision, the form should direct the request to #respond, not #create
-    @head = Ticket.find(session[:user_ticket_respond_parent_id]).head
-    @ticket.ticket_id = @head.id
-    ##############
+    if session[:user_ticket_respond_parent_id]
+      @head = Ticket.find(session[:user_ticket_respond_parent_id]).head
+      @ticket.ticket_id = @head.id
+    end
     @ticket.creator = current_user
 
     respond_to do |format|
