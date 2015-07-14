@@ -41,6 +41,7 @@ rails s
 
 The server will be accessible via [localhost](http://localhost:3000)
 
+
 # Organisation MVC
 
 Guide documentation : [visit](http://guides.rubyonrails.org/)
@@ -63,6 +64,7 @@ Creating a new table = Create a new migration. Use the command like ``rails gene
 ### Change an existing table
 
 Each changement on the database needs a migration. ``rails g migration``.
+
 
 # Contributors
 
