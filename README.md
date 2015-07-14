@@ -41,6 +41,10 @@ rails s
 
 The server will be accessible via [localhost](http://localhost:3000)
 
+Default identifiers:
+``user> login: admin@jerevedunemaison.com , password: jrdm2015``
+``admin> login: admin@wir.com , password: wir2015``
+
 
 # Organisation MVC
 
