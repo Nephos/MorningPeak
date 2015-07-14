@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  match "/users/dashboard", to: 'home#user_dashboard', via: [:get], as: 'users_dashboard'
   devise_for :admins
+  match "/admins/dashboard", to: 'home#admin_dashboard', via: [:get], as: 'admins_dashboard'
 
   # CLIENTS
   resources :client_tickets, path: '/client/tickets' do

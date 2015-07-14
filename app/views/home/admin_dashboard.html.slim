@@ -1,0 +1,38 @@
+h1.page-header Admin Dashboard
+
+.rowplaceholders
+  .col-xs-6.col-sm-3.placeholder
+    img data-src="clients" class="img-responsive" alt="Clients"
+      h4 Clients
+      span.text-muted = "Number: #{@clients_count}"
+      br
+
+  .col-xs-6.col-sm-3.placeholder
+    img data-src="contacts" class="img-responsive" alt="Contacts"
+      h4 Contacts
+      span.text-muted = "Number: #{@contacts_count}"
+      br
+      span.text-muted = "Client with no contacts: #{@no_client_contacts_count}"
+      br
+
+  .col-xs-6.col-sm-3.placeholder
+    img data-src="bills" class="img-responsive" alt="Bills"
+      h4 Bills
+      span.text-muted = "Retard bills: #{@retard_bills}"
+      br
+      span.text-muted = "Advanced bills: #{@advanced_bills}"
+      br
+      span.text-muted = "Next bills: #{@retard_bills}"
+      br
+      span.text-muted = "Old bills: #{@old_bills}"
+      br
+      span.text-muted = "Total Bills: #{@bills_count}"
+      br
+
+  .col-xs-6.col-sm-3.placeholder
+    img data-src="tickets" class="img-responsive" alt="Tickets"
+      h4 Tickets
+      span.text-muted = "Closed tickets: #{@ticket_closed}"
+      br
+      span.text-muted = "Opened tickets: #{@ticket_opened}"
+      br

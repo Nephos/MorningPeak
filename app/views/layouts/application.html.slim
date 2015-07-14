@@ -34,7 +34,7 @@ html
           - if user_signed_in?
             ul.nav.nav-sidebar
               li.active
-                a href="#"
+                = link_to users_dashboard_url do
                   | User
                   span.sr-only (current)
               li = link_to "bills", client_bills_url
@@ -48,7 +48,7 @@ html
               br
             ul.nav.nav-sidebar
               li.active
-                a href="#"
+                = link_to admins_dashboard_url do
                   | Admin
                   span.sr-only (current)
               li = link_to "clients", clients_url
