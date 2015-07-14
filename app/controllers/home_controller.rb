@@ -23,6 +23,7 @@ class HomeController < ApplicationController
     @bills_count = Bill.count
     @ticket_closed = Ticket.heads.close.count
     @ticket_opened = Ticket.heads.open.count
+    @ticket_waiting = current_admin.tickets_unview.count
   end
 
 end

@@ -2,13 +2,15 @@ h1.page-header Admin Dashboard
 
 .rowplaceholders
   .col-xs-6.col-sm-3.placeholder
-    = image_tag "icone_client.png", alt: "image clients", class: "img-responsive", size: "128x128"
+    = link_to clients_url do
+      = image_tag "icone_client.png", alt: "image clients", class: "img-responsive", size: "128x128"
     h4 Clients
     span.text-muted = "Count: #{@clients_count}"
     br
 
   .col-xs-6.col-sm-3.placeholder
-    = image_tag "icone_contact.png", alt: "image contact", class: "img-responsive", size: "128x128"
+    = link_to contacts_url do
+      = image_tag "icone_contact.png", alt: "image contact", class: "img-responsive", size: "128x128"
     h4 Contacts
     span.text-muted = "Count: #{@contacts_count}"
     br
@@ -16,7 +18,8 @@ h1.page-header Admin Dashboard
     br
 
   .col-xs-6.col-sm-3.placeholder
-    = image_tag "icone_bill.png", alt: "image bills", class: "img-responsive", size: "128x128"
+    = link_to bills_url do
+      = image_tag "icone_bill.png", alt: "image bills", class: "img-responsive", size: "128x128"
     h4 Bills
     span.text-muted = "Retard bills: #{@retard_bills}"
     br
@@ -30,11 +33,14 @@ h1.page-header Admin Dashboard
     br
 
   .col-xs-6.col-sm-3.placeholder
-    = image_tag "icone_ticket.png", alt: "image tickets", class: "img-responsive", size: "128x128"
+    = link_to tickets_url do
+      = image_tag "icone_ticket.png", alt: "image tickets", class: "img-responsive", size: "128x128"
     h4 Tickets
     span.text-muted = "Closed tickets: #{@ticket_closed}"
     br
     span.text-muted = "Opened tickets: #{@ticket_opened}"
+    br
+    span.text-muted = "Waiting tickets: #{@ticket_waiting}"
     br
 
   / here, add a wonderful statistic graph with js
