@@ -74,7 +74,7 @@ Each changement on the database needs a migration. ``rails g migration``.
 
 # Contributors
 
-- poulet_a (as lead)
+- poulet_a (as lead) ![lolcommit](https://pbs.twimg.com/media/CJ_ErJ2W8AAdev3.jpg)
 
 ## How to contribute ?
 
