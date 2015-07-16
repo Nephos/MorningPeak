@@ -23,4 +23,5 @@ erd.pdf
 config/database.yml
 .env
 .env*
+
 lolcommit.yml
