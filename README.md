@@ -21,7 +21,7 @@ In your shell, start by using this script:
 cd MorningPeak/
 gem install bundler
 bundle install
-edit config/database.yml
+cp config/database.yml.example config/database.yml
 edit config/database.yml # Configure your database connection first
 rake db:create # create the db
 rake db:migrate # migrate the db
