@@ -30,6 +30,6 @@ table.table.table-condensed
             td.bg-danger = distance_of_time_in_words_to_now(bill.due_date) + " - " + bill.due_date.to_s(:long)
         - else
           td.bg-info = distance_of_time_in_words_to_now(bill.due_date).to_s + " - " + bill.due_date.to_s(:long)
-        td = link_to 'Show', bill
+        td = link_to 'Show', client_bill_url(bill)
 
 br

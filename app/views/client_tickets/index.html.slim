@@ -31,7 +31,7 @@ table.table.table-condensed
         td = link_to (t ".buttons.show"), ticket
         td = link_to (t ".buttons.edit"), edit_client_ticket_path(ticket)
         / td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to (t ".buttons.respond"), ticket_respond_path(ticket) if ticket.open?
+        td = link_to (t ".buttons.respond"), client_ticket_respond_path(ticket) if ticket.open?
         - if ticket.open?
           td = link_to (t ".buttons.close"), client_ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
         - elsif ticket.close?
