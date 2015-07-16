@@ -11,22 +11,23 @@ The application is designed to manage your clients, bills, and issues.
 ## Requirements
 
 - First install ruby 2 or greater. It is not advised to do the following commands as ``root``.
+- Postgresql server
 - Then, be sure you have postgresql installed, and started.
 
 ## Initialization
 
+In your shell, start by using this script:
 ```bash
 cd MorningPeak/
 gem install bundler
 bundle install
-cp config/database.yml.example config/database.yml
+edit config/database.yml
 edit config/database.yml # Configure your database connection first
 rake db:create # create the db
 rake db:migrate # migrate the db
 ```
 
 you can try with an first example of dataset :
-
 ```
 rake db:seed
 ```
@@ -34,7 +35,6 @@ rake db:seed
 ## Running
 
 You can run the server by :
-
 ```
 rails s
 ```
@@ -47,29 +47,7 @@ Default identifiers:
 
 ``admin> login: admin@wir.com , password: wir2015``
 
-
-# Organisation MVC
-
-Guide documentation : [visit](http://guides.rubyonrails.org/)
-
-The RoR Project works with some main parts :
-
-- __/config/routes.rb__ : the routing. The url accessible from http://... will call a Controller.method
-- __/app/controllers/*__ : the controllers. they are the mind using the parameters and choosing the render to use
-- __/app/models/*__ : the modelisation of the database
-- __/app/views/*/*__ : the views rendered after the controller
-- __/db/migrate/*__ : the migrations. They represents the state of the databases
-- __/app/assets/__ : all stylesheets css, javascript, images
-
-## Create a new table, upgrade, etc.
-
-### Create a table
-
-Creating a new table = Create a new migration. Use the command like ``rails generate Table data1:string data2:integer`` etc.
-
-### Change an existing table
-
-Each changement on the database needs a migration. ``rails g migration``.
+Checkout for [rails minidoc](RailsMinidoc.md) for a resume of rails.
 
 
 # Contributors
