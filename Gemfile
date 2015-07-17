@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 group :doc do
   gem 'sdoc', '~> 0.4.0'
-  gem 'erd'
+  gem 'rails-erd'
 end
 
 # Use ActiveModel has_secure_password
