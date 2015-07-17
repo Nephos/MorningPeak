@@ -6,13 +6,15 @@
 _Morning Peak is a modern and OpenSource Web Application.
 It has been designed to manage clients, bills, and issues for little and medium compagnies._
 
-1. Installation
-	1. Requieremnts
-	2. Initialization
-	3. First start
-2. Contributions
-	1. Contributors
-	2. How to contribute
+1. [Installation](#1-installation)
+  1. [Requirements](#11-requirements)
+  2. [Initialization](#12-initialization)
+  3. [First start](#13-first-start)
+2. [Contributions](#2-contributions)
+  1. [Contributors](#21-contributors)
+  2. [How to contribute](#22-how-to-contribute)
+
+
 
 # 1. Installation
 
