@@ -10,8 +10,8 @@ class Ticket < ActiveRecord::Base
 
   validates :state, inclusion: {in: [OPEN, CLOSE]}
   # validates :creator, inclusion: {in: CREATORS}
-  validates :title, length: {in: 7..32}
-  validates :description, length: {minimum: 25}
+  validates :title, length: {in: 7..124}
+  validates :description, length: {minimum: 12}
 
   belongs_to :creator, polymorphic: true
   delegate :name, to: :creator, prefix: true

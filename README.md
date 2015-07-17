@@ -1,10 +1,14 @@
 # What is this application
 
-![Desktop view](http://i.imgur.com/oxE9LR1.png)
-![Mobile view](http://imgur.com/bnYHYJ6l.png)
-
 _Morning Peak is a modern and OpenSource Web Application.
 It has been designed to manage clients, bills, and issues for little and medium compagnies._
+
+<img att="Dashboard Mobile view" src="http://imgur.com/bnYHYJ6l.png" width="320" />
+<img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="600" />
+<img alt="Dashboard Desktop view" src="http://i.imgur.com/oxE9LR1.png" width="600" />
+
+
+## Summary
 
 1. [Installation](#1-installation)
   1. [Requirements](#11-requirements)
