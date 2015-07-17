@@ -7,6 +7,14 @@ class HomeController < ApplicationController
     if not user_signed_in?
       redirect_to root_url
     end
+    @retard_bills = current_user.bills.retard.count
+    @advanced_bills = current_user.bills.advanced.count
+    @next_bills = current_user.bills.next.count
+    @old_bills = current_user.bills.old.count
+    @bills_count = current_user.bills.count
+    @ticket_closed = current_user.tickets.heads.close.count
+    @ticket_opened = current_user.tickets.heads.open.count
+    @ticket_waiting = current_user.tickets_unview.count
   end
 
   def admin_dashboard
