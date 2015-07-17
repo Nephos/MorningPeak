@@ -1,0 +1,31 @@
+.col-sm-3.col-md-2.sidebar
+  ul.nav.nav-sidebar
+    / User side
+    - if user_signed_in?
+      ul.nav.nav-sidebar
+        li.active
+          = link_to users_dashboard_url do
+            | User
+            span.sr-only (current)
+        li = link_to client_bills_url do
+          | bills due 
+          .badge = user_bills_count_due
+        li = link_to client_tickets_url do
+          | tickets 
+          .badge = user_tickets_unview_count
+
+    / Admin side
+    - if admin_signed_in?
+      - if user_signed_in?
+        br
+      ul.nav.nav-sidebar
+        li.active
+          = link_to admins_dashboard_url do
+            | Admin
+            span.sr-only (current)
+        li = link_to "clients", clients_url
+        li = link_to "contacts", contacts_url
+        li = link_to "bills", bills_url
+        li = link_to tickets_url do
+          | tickets 
+          .badge = admin_tickets_unview_count

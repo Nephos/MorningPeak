@@ -1,6 +1,6 @@
 module ApplicationHelper
 
   def application_title
-    ['MorningPeak', ENV['COMPANY'], 'client gestion'].join(' ')
+    ['MorningPeak', ENV['COMPANY'], 'CRM'].compact.join(' ')
   end
 end

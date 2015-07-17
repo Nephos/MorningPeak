@@ -1,0 +1,18 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    #navbar-title.navbar-header
+      button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"]
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      .navbar-brand
+        = link_to application_title, root_url
+
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav.navbar-right
+        li = link_to "Help", help_url
+        - if user_signed_in?
+          li = link_to "#{current_user.name} logout", destroy_user_session_path, method: :delete
+        - if admin_signed_in?
+          li = link_to "#{current_admin.email} logout", destroy_admin_session_path, method: :delete

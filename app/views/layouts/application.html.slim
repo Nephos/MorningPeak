@@ -9,69 +9,14 @@ html
     = csrf_meta_tags
 
   body
-    nav.navbar.navbar-inverse.navbar-fixed-top
-      .container-fluid
-        .navbar-header
-          button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          .navbar-brand = link_to application_title, root_url
+    = render partial: "/layouts/navbar"
 
-        .navbar-collapse.collapse
-          ul.nav.navbar-nav.navbar-right
-            - if user_signed_in?
-              li = link_to "#{current_user.name} logout", destroy_user_session_path, method: :delete
-            - if admin_signed_in?
-              li = link_to "#{current_admin.email} logout", destroy_admin_session_path, method: :delete
-            li = link_to "Help", help_url
-
-    .container-fluid
+    .container
       .row
-        #sidebar.sidebar.col-sm-3.col-md-2
-          / User side
-          - if user_signed_in?
-            ul.nav.nav-sidebar
-              li.active
-                = link_to users_dashboard_url do
-                  | User
-                  span.sr-only (current)
-              li = link_to client_bills_url do
-                | bills due 
-                .badge = user_bills_count_due
-              li = link_to client_tickets_url do
-                | tickets 
-                .badge = user_tickets_unview_count
+        = render partial: "/layouts/sidebar"
 
-          / Admin side
-          - if admin_signed_in?
-            - if user_signed_in?
-              br
-            ul.nav.nav-sidebar
-              li.active
-                = link_to admins_dashboard_url do
-                  | Admin
-                  span.sr-only (current)
-              li = link_to "clients", clients_url
-              li = link_to "contacts", contacts_url
-              li = link_to "bills", bills_url
-              li = link_to tickets_url do
-                     | tickets 
-                     .badge = admin_tickets_unview_count
+        #main.main.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
 
-        #main.main.col-sm-9.col-md-10.col-md-offset-2
-          #infos
-          - if alert
-            #alert.alert.bg-danger
-              span.glyphicon.glyphicon-exclamation-sign aria-hidden="true"
-              span.sr-only Error:
-              = " #{alert}"
-          - if notice
-            #notice.alert.bg-warning
-              span.glyphicon.glyphicon-info-sign aria-hidden="true"
-              span.sr-only Error:
-              = " #{notice}"
-
+          = render partial: "/layouts/infos"
           #yield.yield
             = yield
