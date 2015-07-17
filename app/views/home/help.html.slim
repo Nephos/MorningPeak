@@ -1,28 +1,53 @@
 h1.page-header Help
 
-.panel.panel-primary
-  .panel-heading
-    .panel-title Client
-  .panel-body
-    p
-      | You can access to the bills you due to your provider via 'Bills'
-      | The bill panel also allows you to see how many bills you due (retard and next)
-      br
-      | You can also access to the issues system via the pannel (Tickets).
-      | You can open a new ticket, close, or respond.
-      | It is a simple way to communicate with your provider
+- if user_signed_in?
+  .panel.panel-primary
+    .panel-heading
+      .panel-title Client
+    .panel-body
+      p
+        | Wecome to the Morning Peak CRM. 
+        | This is an open source web application, designed for you, client of a provider, and your creditor. 
+        | The application is compatible on Desktop, Tablet, and Mobiles. 
+      h3 On Desktop
+      p
+        | With a large screen, you will be able to use the left sidebar panel. It allowes you to access to your 
+        | dashboard (click on 'User'). You have also a link to the bills you due to your provider, and a links to the tickets, 
+        | used to make easier the contact and conversation with him.
+      h3 On Tablet and Mobile
+      p
+        | With Tablets and Mobiles, you cannot see the sidebar panel. Instead, you will have an access to your dashboard, 
+        | by using the square button on the top right. 
+        br
+        | On the dashboard, you will see how many Bills you have (due, passed, ...) and the same for your tickets.
 
-.panel.panel-danger
-  .panel-heading
-    .panel-title Admin
-  .panel-body
-    p
-      | You can access to the list of your clients, the contacts for each clients,
-      | the bills your clients due to you and also the tickets to communicate with them.
+- if admin_signed_in?
+  .panel.panel-danger
+    .panel-heading
+      .panel-title Admin
+    .panel-body
+      p
+        | You can access to the list of your clients, the contacts for each clients, 
+        | the bills your clients due to you and also the tickets to communicate with them. 
+
+- if not user_signed_in? and not admin_signed_in?
+  .panel.panel-primary
+    .panel-heading
+      .panel-title Connection
+    .panel-body
+      p
+        | To use this application, you have to sign in as a Client or Administrator with your créditentials.
+        br
+        = link_to "Sign in as User", new_user_session_path
+        br
+        | If you are an administrator, use this link instead
+        br
+        = link_to "Sign in as Admin", new_admin_session_path
+        br
 
 p
   | You can also contact the administrator, via the 
   = link_to "developpers on the website", "https://gitlab.com/WebImmoRenovation/MorningPeak/issues"
   br
-  | Please, don't forget to be explicit and to write carefully.
-  | It the request is too much broad, then it will not be handled.
+  | Please, don't forget to be explicit and to write carefully. 
+  | It the request is too much broad, then it will not be handled. 
