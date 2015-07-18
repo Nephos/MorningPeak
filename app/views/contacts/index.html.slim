@@ -8,12 +8,10 @@ table.table.table-condensed.
       th Name
       th Phone
       th Email
-      th Last contact
       th Note
-      th Region
-      th Department
       th Postal code
-      th Address
+      th Last view
+      th
       th
       th
       th
@@ -26,12 +24,11 @@ table.table.table-condensed.
         td = link_to contact.name, contact
         td = contact.phone
         td = contact.email
-        td = contact.last_contact
         td = contact.note
-        td = contact.region
-        td = contact.department
         td = contact.postal_code
-        td = contact.address
+        td = contact.view_at
+        td = link_to 'View today!', view_contact_path(contact), method: :patch, remote: true
+        / TODO: Javascript to update the case
         td = link_to 'Show', contact
         td = link_to 'Edit', edit_contact_path(contact)
         td = link_to 'Destroy', contact, data: {:confirm => 'Are you sure?'}, :method => :delete

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get '/tickets/:id/respond', to: 'tickets#respond', as: 'respond_ticket'
 
   resources :contacts
+  match '/contacts/:id/view', to: 'contacts#view', via: [:patch, :get], as: 'view_contact'
   resources :bills
   resources :clients
 

@@ -1,6 +1,12 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :view]
   before_action :authenticate_admin!
+
+  # PATCH /view/1
+  def view
+    @contact.update(view_at: Time.now)
+    render json: @contact, status: :ok
+  end
 
   # GET /contacts
   # GET /contacts.json
@@ -70,6 +76,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:client_id, :name, :phone, :email, :last_contact, :note, :region, :department, :postal_code, :address)
+      params.require(:contact).permit(:client_id, :name, :phone, :email, :note, :region, :department, :postal_code, :address)
     end
 end
