@@ -1,16 +1,16 @@
 # coding: utf-8
-u1 = Admin.create(email: "admin@wir.com", password: 'wir2015')
-u2 = User.create(email: "admin@jerevedunemaison.com", password: 'jrdm2015')
-u3 = User.create(email: "admin@rasecampagneimmo.com", password: 'rci2015')
+u1 = Admin.create(email: "admin@admin.admin", password: 'adminadmin')
+u2 = User.create(email: "user@client.com", password: 'user2015')
+u3 = User.create(email: "user@rasecampagneimmo.com", password: 'rci2015')
 
 c2=u2.client
 c3=u3.client
 
-co1=Contact.create(name: "Eric Chatry", client: c2)
+co1=Contact.create(name: "Ceric Trovic", client: c2)
 co2=Contact.create(name: "M. Sometime", client: c3)
 co3=Contact.create(name: "Mme. Chose", client: c3)
 
-c2.update(name: "JRDM", contact: co1)
+c2.update(name: "CLIENT", contact: co1)
 
 c3.update(name: "RaseCampagneImmo")
 

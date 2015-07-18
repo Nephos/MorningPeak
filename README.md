@@ -1,11 +1,20 @@
-# What is this application
+# Project Presentation
 
 _Morning Peak is a modern and OpenSource Web Application.
 It has been designed to manage clients, bills, and issues for little and medium compagnies._
 
 <img att="Dashboard Mobile view" src="http://imgur.com/bnYHYJ6l.png" width="320" />
-<img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="600" />
 <img alt="Dashboard Desktop view" src="http://i.imgur.com/oxE9LR1.png" width="600" />
+
+There is a lot of CRM on the web. Some of them are web application. Some of them are open source. Some of them are modern.
+But, I __never see any of them grouping the 3__. It is why I started to develop this application.
+To improve my skills, my knowledges, and to use it.
+
+I want a simple application, that I __understand__, and that I __need__.
+
+I whould like money, contributions, critics, etc.
+
+<img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="600" />
 
 
 ## Summary
@@ -25,11 +34,11 @@ It has been designed to manage clients, bills, and issues for little and medium 
 ## 1.1. Requirements
 
 - Ruby 2.0 or greater.
-- Postgresql server.
+- Postgresql server 9 or greater running with creditentials.
 
 ## 1.2. Initialization
 
-In your shell, start by using this script:
+Start by pasting this script in your shell:
 ```bash
 cd MorningPeak/
 gem install bundler
@@ -49,13 +58,17 @@ you can run the server by the following command :
 rails s		# "-b 0.0.0.0 -p 80" to test on internet :)
 ```
 
-The server will be accessible via [localhost](http://localhost:3000)
+The server will be accessible via [localhost:3000](http://localhost:3000)
 
-Default identifiers, generated in the seed:
+Default creditentials are generated in the seed:
 
-``user> login: admin@jerevedunemaison.com , password: jrdm2015``
+```text
+user> login: user@client.com , password: user2015
+```
 
-``admin> login: admin@wir.com , password: wir2015``
+```text
+admin> login: admin@admin.admin , password: wir2015
+```
 
 Checkout for [rails minidoc](RailsMinidoc.md) for a resume of rails.
 
