@@ -26,9 +26,10 @@ table.table.table-condensed.
         td = contact.email
         td = contact.note
         td = contact.postal_code
-        td = contact.view_at
-        td = link_to 'View today!', view_contact_path(contact), method: :patch, remote: true
-        / TODO: Javascript to update the case
+        td.contact-value-view_at
+          = contact.view_at
+        td.contact-link-view_at
+          = link_to 'View today!', view_contact_path(contact), method: :patch, remote: true
         td = link_to 'Show', contact
         td = link_to 'Edit', edit_contact_path(contact)
         td = link_to 'Destroy', contact, data: {:confirm => 'Are you sure?'}, :method => :delete
