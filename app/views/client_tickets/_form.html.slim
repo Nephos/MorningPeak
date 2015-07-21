@@ -14,8 +14,10 @@
     .field
       = f.label :description
       = f.text_area :description, class: "form-control", size: "100x8"
-  .form-group
-    .field
-      = f.label :state
-      = f.text_field :state, class: "form-control"
+  / display the choice to close only if 'respond to'
+  - if @head
+    .form-group
+      .field
+        = f.label :state
+        = f.select :state, ["open", "close"], {}, class: "form-control"
   .actions = f.submit class: "btn btn-default"
