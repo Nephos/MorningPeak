@@ -3,18 +3,22 @@
 _Morning Peak is a modern and OpenSource Web Application.
 It has been designed to manage clients, bills, and issues for little and medium compagnies._
 
-<img att="Dashboard Mobile view" src="http://imgur.com/bnYHYJ6l.png" width="320" />
-<img alt="Dashboard Desktop view" src="http://i.imgur.com/oxE9LR1.png" width="600" />
+<img att="Dashboard Mobile view" src="http://imgur.com/bnYHYJ6l.png" width="200" />
+<img alt="Dashboard Desktop view" src="http://i.imgur.com/oxE9LR1.png" width="500" />
 
 There is a lot of CRM on the web. Some of them are web application. Some of them are open source. Some of them are modern.
 But, I __never see any of them grouping the 3__. It is why I started to develop this application.
 To improve my skills, my knowledges, and to use it.
 
-I want a simple application, that I __understand__, and that I __need__.
+I want a simple application, that I __understand__, and that I __need__. By __simple__, I mean:
 
-I whould like money, contributions, critics, etc.
+- No tasks, no reports, no chat. I want an application to do ONE thing, manage my clients, and it must do it clearly, and good.
+- A pluggable application, with many __REST API__. Because tasks and reports are usefull.
+- Generic items. I prefere __ONE kind of Bills + Tags__ than __4 ou 5 kinds of Bills__ (for example).
 
-<img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="600" />
+I would like money, contributions, critics, etc.
+
+<img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="500" />
 
 
 ## Summary
