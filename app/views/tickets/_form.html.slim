@@ -6,22 +6,29 @@
         - @ticket.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :ticket_id
-    = f.text_field :ticket_id
-  .field
-    = f.label :creator_type
-    = f.text_field :creator_type
-  .field
-    = f.label :creator_id
-    = f.text_field :creator_id
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :state
-    = f.text_field :state
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :ticket_id, class: "sr-only"
+        = f.text_field :ticket_id, class: "form-control", placeholder: "Ticket id"
+    .form-group
+      .field
+        = f.label :creator_type, class: "sr-only"
+        = f.text_field :creator_type, class: "form-control", placeholder: "Creator type"
+    .form-group
+      .field
+        = f.label :creator_id, class: "sr-only"
+        = f.text_field :creator_id, class: "form-control", placeholder: "Creator ID"
+    .form-group
+      .field
+        = f.label :title, class: "sr-only"
+        = f.text_field :title, class: "form-control", placeholder: "Title"
+    .form-group
+      .field
+        = f.label :description, class: "sr-only"
+        = f.text_area :description, class: "form-control", placeholder: "Description"
+    .form-group
+      .field
+        = f.label :state, class: "sr-only"
+        = f.text_field :state, class: "form-control", placeholder: "State"
   .actions = f.submit

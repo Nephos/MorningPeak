@@ -6,22 +6,30 @@
         - @client.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :activity
-    = f.text_field :activity
-  .field
-    = f.label :contact_reasons
-    = f.text_area :contact_reasons
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
-  .field
-    = f.label :contact_id
-    = f.text_field :contact_id
-  .actions = f.submit
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :name, class: "sr-only"
+        = f.text_field :name, class: "form-control", placeholder: "Name"
+    .form-group
+      .field
+        = f.label :url, class: "sr-only"
+        = f.text_field :url, class: "form-control", placeholder: "URL"
+    .form-group
+      .field
+        = f.label :activity, class: "sr-only"
+        = f.text_field :activity, class: "form-control", placeholder: "Acitvity"
+    .form-group
+      .field
+        = f.label :contact_reasons, class: "sr-only"
+        = f.text_area :contact_reasons, class: "form-control", placeholder: "Contact reasons"
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :user_id, class: "sr-only"
+        = f.text_field :user_id, class: "form-control", placeholder: "User ID"
+    .form-group
+      .field
+        = f.label :contact_id, class: "sr-only"
+        = f.text_field :contact_id, class: "form-control", placeholder: "Main Contact ID"
+  .actions = f.submit class: "btn btn-success"

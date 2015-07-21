@@ -6,34 +6,48 @@
         - @contact.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :client_id
-    = f.text_field :client_id
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :view_at
-    = f.date_select :view_at
-  .field
-    = f.label :note
-    = f.text_area :note
-  .field
-    = f.label :region
-    = f.text_field :region
-  .field
-    = f.label :department
-    = f.text_field :department
-  .field
-    = f.label :postal_code
-    = f.text_field :postal_code
-  .field
-    = f.label :address
-    = f.text_area :address
-  .actions = f.submit
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :client_id, class: "sr-only"
+        = f.text_field :client_id, class: "form-control", placeholder: "Client ID"
+  .form-inline
+    .form-group
+      .field
+        = f.label :name, class: "sr-only"
+        = f.text_field :name, class: "form-control", placeholder: "Name"
+    .form-group
+      .field
+        = f.label :phone, class: "sr-only"
+        = f.text_field :phone, class: "form-control", placeholder: "Phone"
+    .form-group
+      .field
+        = f.label :email, class: "sr-only"
+        = f.text_field :email, class: "form-control", placeholder: "Email"
+  .form-inline
+    .form-group
+      .field
+        = f.label :region, class: "sr-only"
+        = f.text_field :region, class: "form-control", placeholder: "Region"
+    .form-group
+      .field
+        = f.label :department, class: "sr-only"
+        = f.text_field :department, class: "form-control", placeholder: "Department"
+    .form-group
+      .field
+        = f.label :postal_code, class: "sr-only"
+        = f.text_field :postal_code, class: "form-control", placeholder: "Postal Code"
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :address, class: "sr-only"
+        = f.text_area :address, class: "form-control", placeholder: "Address"
+    .form-group
+      .field
+        = f.label :note, class: "sr-only"
+        = f.text_area :note, class: "form-control", placeholder: "Note"
+    .form-group
+      .field
+        = f.label :view_at, class: "sr-only"
+        = f.text_field :view_at, class: "form-control form-date", placeholder: "View at"
+  .actions = f.submit class: "btn btn-success"
