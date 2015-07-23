@@ -1,14 +1,14 @@
 h1.page-header Admin Dashboard
 
 .row.placeholders
-  .col-xs-6.col-sm-3.placeholder
+  .col-xs-6.col-sm-2.placeholder
     = link_to clients_url do
       = image_tag "icone_client.png", alt: "image clients", class: "img-responsive", size: "128x128"
     h4 Clients
     span.text-muted = "Count: #{@clients_count}"
     br
 
-  .col-xs-6.col-sm-3.placeholder
+  .col-xs-6.col-sm-2.placeholder
     = link_to contacts_url do
       = image_tag "icone_contact.png", alt: "image contact", class: "img-responsive", size: "128x128"
     h4 Contacts
@@ -17,7 +17,7 @@ h1.page-header Admin Dashboard
     span.text-muted = "Client with no contacts: #{@no_client_contacts_count}"
     br
 
-  .col-xs-6.col-sm-3.placeholder
+  .col-xs-6.col-sm-2.placeholder
     = link_to bills_url do
       = image_tag "icone_bill.png", alt: "image bills", class: "img-responsive", size: "128x128"
     h4 Bills
@@ -32,7 +32,7 @@ h1.page-header Admin Dashboard
     span.text-muted = "Total Bills: #{@bills_count}"
     br
 
-  .col-xs-6.col-sm-3.placeholder
+  .col-xs-6.col-sm-2.placeholder
     = link_to tickets_url do
       = image_tag "icone_ticket.png", alt: "image tickets", class: "img-responsive", size: "128x128"
     h4 Tickets
@@ -41,6 +41,17 @@ h1.page-header Admin Dashboard
     span.text-muted = "Opened tickets: #{@ticket_opened}"
     br
     span.text-muted = "Waiting tickets: #{@ticket_waiting}"
+    br
+
+  .col-xs-6.col-sm-2.placeholder
+    = link_to admins_export_url do
+      = image_tag "icone_export.png", alt: "image export", class: "img-responsive", size: "128x128"
+    h4 Export
+    span.text-muted = "Clients: #{@clients_count}"
+    br
+    span.text-muted = "Contacts: #{@contacts_count}"
+    br
+    span.text-muted = "Bills: #{@bills_count}"
     br
 
   / here, add a wonderful statistic graph with js
