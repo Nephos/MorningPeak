@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   resources :clients
 
   match "/users/dashboard", to: 'home#user_dashboard', via: [:get], as: 'users_dashboard'
+  match "/users", to: redirect('/users/dashboard'), via: [:get]
   devise_for :users
   match "/admins/dashboard", to: 'home#admin_dashboard', via: [:get], as: 'admins_dashboard'
+  match "/admins", to: redirect('/admins/dashboard'), via: [:get]
   match "/admins/export", to: "home#export", via: [:get], as: 'admins_export'
   devise_for :admins
 
