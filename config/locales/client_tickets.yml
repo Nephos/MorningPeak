@@ -1,5 +1,9 @@
 fr:
   client_tickets:
+    form:
+      title: Titre
+      description: Détail
+      state: État
     show:
       title: Titre
       respond_to: Réponse à
@@ -9,14 +13,6 @@ fr:
         open: Ouvert
       creator: Créateur
       description: Description
-      buttons:
-        show: Afficher
-        edit: Éditer
-        respond: Répondre
-        close: Fermer
-        reopen: Ré-ouvrir
-        new: Créer un nouveau Ticket
-        back: "Revenir à l'index"
       page:
         title: Afficher un Ticket
     index:
@@ -30,18 +26,24 @@ fr:
       description: Description
       last_update: Dernière mise à jour
       last_response: Dernière réponse
-      buttons:
-        show: Afficher
-        edit: Éditer
-        respond: Répondre
-        close: Fermer
-        reopen: Ré-ouvrir
-        new: Créer un nouveau Ticket
       page:
         title: Liste de mes Tickets
+    edit:
+      page:
+        title: Éditer un Ticket
+    new:
+      page:
+        title: Nouveau Ticket
+    response:
+      page:
+        title: Répondre au Ticket
 
 en:
   client_tickets:
+    form:
+      title: Title
+      description: Description
+      state: State
     show:
       title: Title
       respond_to: Repond to
@@ -51,14 +53,6 @@ en:
         open: Ouvert
       creator: Créateur
       description: Description
-      buttons:
-        show: Show
-        edit: Edit
-        respond: Repond
-        close: Close
-        reopen: Reopen
-        new: New Ticket
-        back: Back
       page:
         title: Afficher un Ticket
     index:
@@ -72,12 +66,14 @@ en:
       description: Description
       last_update: Last update
       last_response: Last Response
-      buttons:
-        show: Show
-        edit: Edit
-        respond: Repond
-        close: Close
-        reopen: Reopen
-        new: New Ticket
       page:
         title: My Tickets list
+    new:
+      page:
+        title: New Ticket
+    edit:
+      page:
+        title: Edition Ticket
+    response:
+      page:
+        title: Response to Ticket

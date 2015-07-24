@@ -8,16 +8,16 @@
 
   .form-group
     .field
-      = f.label :title
-      = f.text_field :title, class: "form-control"
+      = f.label :title, class: "sr-only"
+      = f.text_field :title, class: "form-control", placeholder: "#{t('.title')}"
   .form-group
     .field
-      = f.label :description
-      = f.text_area :description, class: "form-control", size: "100x8"
+      = f.label :description, class: "sr-only"
+      = f.text_area :description, class: "form-control", size: "100x8", placeholder: "#{t('.description')}"
   / display the choice to close only if 'respond to'
   - if @head
     .form-group
       .field
-        = f.label :state
+        = f.label t('.state')
         = f.select :state, ["open", "close"], {}, class: "form-control"
   .actions = f.submit class: "btn btn-default"

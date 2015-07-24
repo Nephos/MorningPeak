@@ -1,6 +1,6 @@
-h1.page-header Editing ticket
+h1.page-header = t(".page.title")
 
 == render 'form'
 
-= link_to 'Show', client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
-= link_to 'Back', client_tickets_path, class: 'btn btn-sm btn-default'
+= link_to t('show'), client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to t('back'), client_tickets_path, class: 'btn btn-sm btn-default'

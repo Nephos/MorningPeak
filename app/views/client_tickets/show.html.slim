@@ -32,7 +32,7 @@ p
     = @ticket.description
 
 - if not @ticket.tickets.empty?
-  table.table.table-condensed.
+  table.table.table-condensed
     thead
       tr
         th = t ".creator"
@@ -54,15 +54,15 @@ p
           - else
             td.bg-success = ticket.state
           td = ticket.updated_at.to_s(:long)
-          td = link_to (t ".buttons.show"), client_ticket_path(ticket)
-          td = link_to (t ".buttons.edit"), edit_client_ticket_path(ticket)
+          td = link_to (t "show"), client_ticket_path(ticket)
+          td = link_to (t "edit"), edit_client_ticket_path(ticket)
 
 br
 
 - if @ticket.open?
-  = link_to (t '.buttons.respond'), client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
-  = link_to (t '.buttons.close'), client_ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
+  = link_to (t 'respond'), client_ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
+  = link_to (t 'close'), client_ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
 - else
-  = link_to (t '.buttons.reopen'), client_ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
-= link_to (t '.buttons.edit'), edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
-= link_to (t '.buttons.back'), client_tickets_path, class: 'btn btn-sm btn-default'
+  = link_to (t 'reopen'), client_ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
+= link_to (t 'edit'), edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
+= link_to (t 'back'), client_tickets_path, class: 'btn btn-sm btn-default'
