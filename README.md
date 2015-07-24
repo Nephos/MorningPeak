@@ -26,7 +26,8 @@ I would like money, contributions, critics, etc.
 1. [Installation](#1-installation)
   1. [Requirements](#11-requirements)
   2. [Initialization](#12-initialization)
-  3. [First start](#13-first-start)
+  3. [Configuration](#13-configuration)
+  4. [First start](#14-first-start)
 2. [Contributions](#2-contributions)
   1. [Contributors](#21-contributors)
   2. [How to contribute](#22-how-to-contribute-)
@@ -54,7 +55,21 @@ rake db:migrate
 rake db:seed				# will generate default data. Not on production ;)
 ```
 
-## 1.3. First start
+## 1.3. Configuration
+
+- You can create a file ``.env`` to save your locals cvars without pollute your global env.
+- You can also create ``.env.production`` etc. for environement specifics cvars
+- A ``.env`` file looks like:
+```text
+COMPANY: "Yolo production"
+LOCALE: fr
+...
+```
+
+- The application's specifics cvars are :
+  - COMPANY
+
+## 1.4. First start
 
 When you done with the configuration of the database (editing ``config/database.yml``),
 you can run the server by the following command :
