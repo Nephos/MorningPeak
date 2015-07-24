@@ -1,0 +1,77 @@
+fr:
+  bills:
+    form:
+      client_id: ID du Client
+      title: Titre
+      description: Détail
+      amount: Montant
+      is_paid: Payé ?
+      e_date: "Date d'emission"
+      d_date: "Date d'échéance"
+    edit:
+      page:
+        title: Éditer une facture
+    new:
+      page:
+        title: Nouvelle facture
+    index:
+      page:
+        title: Liste des factures
+      id: ID
+      client: Client
+      Title: Titre
+      description: Detail
+      amount: Montant
+      is_paid: Payé ?
+      e_date: "Date d'emission"
+      d_date: "Date d'échéance"
+    show:
+      page:
+        title: Facture
+      id: ID
+      client: Client
+      Title: Titre
+      description: Detail
+      amount: Montant
+      is_paid: Payé ?
+      e_date: "Date d'emission"
+      d_date: "Date d'échéance"
+
+en:
+  bills:
+    form:
+      client_id: Client ID
+      title: Title
+      description: Description
+      amount: Amount
+      is_paid: Paid ?
+      e_date: Emission date
+      d_date: Due date
+    edit:
+      page:
+        title: Edit a Bill
+    new:
+      page:
+        title: New Bill
+    index:
+      page:
+        title: Listing Bills
+      id: ID
+      client: Client
+      title: Title
+      description: Description
+      amount: Amount
+      is_paid: Paid ?
+      e_date: Emission date
+      d_date: Due date
+    show:
+      page:
+        title: Bill
+      id: ID
+      client: Client
+      title: Title
+      description: Description
+      amount: Amount
+      is_paid: Paid ?
+      e_date: Emission date
+      d_date: Due date

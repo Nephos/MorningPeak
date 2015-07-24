@@ -1,25 +1,25 @@
-h1.page-header = "Bill: #{@bill.title}"
+h1.page-header = "#{t('.page.title')}: #{@bill.title}"
 
 p
-  strong Client:
+  strong = t ".client"
   = link_to @bill.client.name, @bill.client
 p
-  strong Title:
+  strong = t ".title"
   = @bill.title
 p
-  strong Description:
+  strong = t ".description"
   = @bill.description
 p
-  strong Amount:
+  strong = t ".amount"
   = @bill.amount
 p
-  strong Paid:
+  strong = t ".is_paid"
   = @bill.paid
 p
-  strong Emission date:
+  strong = t ".e_date"
   = @bill.emission_date
 p
-  strong Due date:
+  strong = t ".d_date"
   - if @bill.due_date < Date.today
     - if @bill.paid
       .bg-success = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
@@ -28,5 +28,5 @@ p
   - else
     .bg-info = distance_of_time_in_words_to_now(@bill.due_date) + " - " + @bill.due_date.to_s(:long)
 
-= link_to 'Edit', edit_bill_path(@bill), class: 'btn btn-sm btn-default'
-= link_to 'Back', bills_path, class: 'btn btn-sm btn-default'
+= link_to t('edit'), edit_bill_path(@bill), class: 'btn btn-sm btn-default'
+= link_to t('back'), bills_path, class: 'btn btn-sm btn-default'

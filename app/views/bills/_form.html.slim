@@ -10,33 +10,33 @@
     .form-group
       .field
         = f.label :client_id, class: "sr-only"
-        = f.text_field :client_id, class: "form-control", placeholder: "Client ID"
+        = f.text_field :client_id, class: "form-control", placeholder: "#{t('.client_id')}"
     .form-group
       .field
         = f.label :title, class: "sr-only"
-        = f.text_field :title, class: "form-control", placeholder: "Title"
+        = f.text_field :title, class: "form-control", placeholder: "#{t('.title')}"
     .form-group
       .field
         = f.label :description, class: "sr-only"
-        = f.text_area :description, class: "form-control", placeholder: "Description"
+        = f.text_area :description, class: "form-control", placeholder: "#{t('.description')}"
   .form-inline
     .form-group
       .field
         = f.label :amount, class: "sr-only"
-        = f.number_field :amount, class: "form-control", placeholder: "Amount"
+        = f.number_field :amount, class: "form-control", placeholder: "#{t('.amount')}"
     .form-group
       .field
-        = f.label :paid
+        = f.label t('.is_paid')
         br
-        = f.check_box :paid, class: "form-control", placeholder: "Paid ?"
+        = f.check_box :paid, class: "form-control", placeholder: "#{t('.is_paid')}"
   .form-inline
     .form-group
       .field
         = f.label :emission_date, class: "sr-only"
-        = f.text_field :emission_date, class: "form-control form-date", placeholder: "Emission date"
+        = f.text_field :emission_date, class: "form-control form-date", placeholder: "#{t('.e_date')}"
     .form-group
       .field
         = f.label :due_date, class: "sr-only"
-        = f.text_field :due_date, class: "form-control form-date", placeholder: "Due date"
+        = f.text_field :due_date, class: "form-control form-date", placeholder: "#{t('.d_date')}"
 
   .actions = f.submit class: "btn btn-success"
