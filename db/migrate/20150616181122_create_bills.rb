@@ -7,8 +7,8 @@ class CreateBills < ActiveRecord::Migration
       t.text :description
       t.integer :amount
       t.boolean :paid, default: false, null: false
-      t.date :emission_date
-      t.date :due_date
+      t.date :emission_date, null: false, default: Date.today
+      t.date :due_date, null: false
 
       t.timestamps null: false
     end
