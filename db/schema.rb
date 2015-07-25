@@ -65,15 +65,16 @@ ActiveRecord::Schema.define(version: 20150725193246) do
     t.text     "comment"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "user_id"
+    t.integer  "creator_id"
+    t.string   "creator_type"
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["creator_type", "creator_id"], name: "index_comments_on_creator_type_and_creator_id", using: :btree
+  add_index "comments", ["role"], name: "index_comments_on_role", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "client_id"

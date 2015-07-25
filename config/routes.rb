@@ -2,20 +2,28 @@ Rails.application.routes.draw do
   root to: "home#index"
   match "/help", to: "home#help", via: [:get], as: 'help'
 
-  # ADMINISTRATION
+  # ----- ADMINISTRATION -----
   resources :tickets do
-    patch :close # TODO: for now, argument is ticket_id instead of id. How to change that ?
+    patch :close
     patch :open
     get :respond
   end
-  # path '/tickets/:id/close', to: 'tickets#close', as: 'close_ticket'
-  # get '/tickets/:id/respond', to: 'tickets#respond', as: 'respond_ticket'
 
-  resources :contacts
+  resources :comments
+  resources :contacts do
+    resources :comments
+  end
   match '/contacts/:id/view', to: 'contacts#view', via: [:patch, :get], as: 'view_contact'
-  resources :bills
-  resources :clients
 
+  resources :bills do
+    resources :comments
+  end
+
+  resources :clients do
+    resources :comments
+  end
+
+  # ----- DASHBOARDS -----
   match "/users/dashboard", to: 'home#user_dashboard', via: [:get], as: 'users_dashboard'
   match "/users", to: redirect('/users/dashboard'), via: [:get]
   devise_for :users
@@ -24,7 +32,7 @@ Rails.application.routes.draw do
   match "/admins/export", to: "home#export", via: [:get], as: 'admins_export'
   devise_for :admins
 
-  # CLIENTS
+  # ----- CLIENTS -----
   resources :client_tickets, path: '/client/tickets' do
     patch :close
     patch :open

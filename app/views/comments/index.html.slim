@@ -1,0 +1,33 @@
+h1 Listing comments
+
+table.table.table-condensed
+  thead
+    tr
+      th Title
+      th Comment
+      th Commentable
+      th Commentable type
+      th Creator ID
+      th Creator Type
+      th Role
+      th
+      th
+      th
+
+  tbody
+    - @comments.each do |comment|
+      tr
+        td = comment.title
+        td = comment.comment
+        td = comment.commentable_id
+        td = comment.commentable_type
+        td = comment.creator_id
+        td = comment.creator_type
+        td = comment.role
+        td = link_to t('show'), comment
+        td = link_to t('edit'), edit_comment_path(comment)
+        td = link_to t('destroy'), comment, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to t('new'), new_comment_path
