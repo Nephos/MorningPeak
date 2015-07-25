@@ -1,4 +1,5 @@
 class Bill < ActiveRecord::Base
+  acts_as_commentable
   belongs_to :client
 
   validates :due_date, presence: true
