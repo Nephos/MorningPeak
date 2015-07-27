@@ -33,3 +33,6 @@ p
 
 = link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-sm btn-default'
 = link_to 'Back', contacts_path, class: 'btn btn-sm btn-default'
+
+#comments.container-fluid
+  = render partial: "/comments/about", locals: {commentable: @contact}
