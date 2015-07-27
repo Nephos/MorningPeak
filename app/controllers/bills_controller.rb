@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  include CommentableForm
+
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
 
@@ -11,6 +13,7 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    prepare_comment_for @bill
   end
 
   # GET /bills/new

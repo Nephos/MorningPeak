@@ -30,8 +30,8 @@ p
 = link_to 'Back', clients_path, class: 'btn btn-sm btn-default'
 
 #contacts.container-fluid
+  h2 Contacts list
   table.table.table-condensed
-    caption Contacts list
     tr
       th Name
       th Phone
@@ -43,6 +43,7 @@ p
           td = contact.email
 
 #bills.container-fluid
+  h2 Bills list
   table.table.table-condensed
     caption = "Retarded Due Bills list #{@client.bills_retard.pluck(:amount).sum} €"
     tr
@@ -80,4 +81,6 @@ p
           td.bg-success = bill.due_date
 
 #comments.container-fluid
+  h2.page-header Comments
   = render partial: "/comments/about", locals: {commentable: @client}
+  = render partial: "/comments/form"
