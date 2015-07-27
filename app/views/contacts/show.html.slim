@@ -35,4 +35,6 @@ p
 = link_to 'Back', contacts_path, class: 'btn btn-sm btn-default'
 
 #comments.container-fluid
+  h2.page-header Comments
   = render partial: "/comments/about", locals: {commentable: @contact}
+  = render partial: "/comments/form"

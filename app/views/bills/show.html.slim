@@ -32,4 +32,6 @@ p
 = link_to t('back'), bills_path, class: 'btn btn-sm btn-default'
 
 #comments.container-fluid
+  h2.page-header Comments
   = render partial: "/comments/about", locals: {commentable: @bill}
+  = render partial: "/comments/form"
