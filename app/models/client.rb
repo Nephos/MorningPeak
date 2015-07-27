@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+  acts_as_commentable
   has_many :contacts
   has_many :bills
   has_many :tickets, through: :user

@@ -62,12 +62,10 @@ gem 'devise'
 # Pagination
 gem 'will_paginate'
 # Bootstrap
-# Bootstrap
-# gem 'bootstrap-sass'
-# gem "therubyracer"
-# gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 # Bootstrap for pagination
 gem 'bootstrap-will_paginate'
 # HTML Templating
 gem 'slim-rails'
+# Commentable items
+gem 'acts_as_commentable'

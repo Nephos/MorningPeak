@@ -25,3 +25,4 @@ config/database.yml
 .env*
 
 lolcommit.yml
+*.swp

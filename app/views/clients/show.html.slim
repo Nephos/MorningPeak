@@ -29,50 +29,58 @@ p
 = link_to 'Edit', edit_client_path(@client), class: 'btn btn-sm btn-default'
 = link_to 'Back', clients_path, class: 'btn btn-sm btn-default'
 
-table.table.table-condensed
-  caption Contacts list
-  tr
-    th Name
-    th Phone
-    th Email
-  - @client.contacts.each do |contact|
-      tr
-        td = link_to contact.name, contact
-        td = contact.phone
-        td = contact.email
+#contacts.container-fluid
+  h2 Contacts list
+  table.table.table-condensed
+    tr
+      th Name
+      th Phone
+      th Email
+    - @client.contacts.each do |contact|
+        tr
+          td = link_to contact.name, contact
+          td = contact.phone
+          td = contact.email
 
-table.table.table-condensed
-  caption = "Retarded Due Bills list #{@client.bills_retard.pluck(:amount).sum} €"
-  tr
-    th Title
-    th Amount
-    th Due date
-  - @client.bills_retard.each do |bill|
-      tr
-        td.bg-danger = link_to bill.title, bill
-        td.bg-danger = bill.amount
-        td.bg-danger = bill.due_date
+#bills.container-fluid
+  h2 Bills list
+  table.table.table-condensed
+    caption = "Retarded Due Bills list #{@client.bills_retard.pluck(:amount).sum} €"
+    tr
+      th Title
+      th Amount
+      th Due date
+    - @client.bills_retard.each do |bill|
+        tr
+          td.bg-danger = link_to bill.title, bill
+          td.bg-danger = bill.amount
+          td.bg-danger = bill.due_date
 
-table.table.table-condensed
-  caption = "Next Bills list #{@client.bills_next.pluck(:amount).sum} €"
-  tr
-    th Title
-    th Amount
-    th Due date
-  - @client.bills_next.each do |bill|
-      tr
-        td.bg-info = link_to bill.title, bill
-        td.bg-info = bill.amount
-        td.bg-info = bill.due_date
+  table.table.table-condensed
+    caption = "Next Bills list #{@client.bills_next.pluck(:amount).sum} €"
+    tr
+      th Title
+      th Amount
+      th Due date
+    - @client.bills_next.each do |bill|
+        tr
+          td.bg-info = link_to bill.title, bill
+          td.bg-info = bill.amount
+          td.bg-info = bill.due_date
 
-table.table.table-condensed
-  caption = "Old Bills list #{@client.bills_old.pluck(:amount).sum} €"
-  tr
-    th Title
-    th Amount
-    th Due date
-  - @client.bills_old.each do |bill|
-      tr
-        td.bg-success = link_to bill.title, bill
-        td.bg-success = bill.amount
-        td.bg-success = bill.due_date
+  table.table.table-condensed
+    caption = "Old Bills list #{@client.bills_old.pluck(:amount).sum} €"
+    tr
+      th Title
+      th Amount
+      th Due date
+    - @client.bills_old.each do |bill|
+        tr
+          td.bg-success = link_to bill.title, bill
+          td.bg-success = bill.amount
+          td.bg-success = bill.due_date
+
+#comments.container-fluid
+  h2.page-header Comments
+  = render partial: "/comments/about", locals: {commentable: @client}
+  = render partial: "/comments/form"

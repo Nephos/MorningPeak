@@ -1,0 +1,8 @@
+  table.table.table-condensed
+    tr
+      th Title
+      th Content
+    - commentable.comments.each do |c|
+      tr
+        td = c.title
+        td = c.comment

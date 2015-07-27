@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  include CommentableForm
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :view]
   before_action :authenticate_admin!
 
@@ -17,6 +19,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    prepare_comment_for @contact
   end
 
   # GET /contacts/new

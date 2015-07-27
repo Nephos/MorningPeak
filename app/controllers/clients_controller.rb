@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  include CommentableForm
+
   before_action :authenticate_admin!
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
   # GET /clients.json
@@ -11,6 +13,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    prepare_comment_for @client
   end
 
   # GET /clients/new

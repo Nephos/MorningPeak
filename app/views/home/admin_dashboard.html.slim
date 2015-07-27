@@ -46,7 +46,8 @@ h1.page-header Admin Dashboard
   .col-xs-6.col-sm-2.placeholder
     = link_to admins_export_url do
       = image_tag "icone_export.png", alt: "image export", class: "img-responsive", size: "128x128"
-    h4 Export
+    h4
+      abbr[title="This option only export the clients, contacts, and bills, without comments etc. If you want to export the complete database, use the native feature of your ORDBMS."] Export
     span.text-muted = "Clients: #{@clients_count}"
     br
     span.text-muted = "Contacts: #{@contacts_count}"

@@ -9,6 +9,7 @@ class Admin < ActiveRecord::Base
          #:validatable
 
   has_many :tickets, as: :creator
+  has_many :comments, as: :creator
 
   def tickets_unview
     Ticket.all.heads.where(admin_view_at: nil)
