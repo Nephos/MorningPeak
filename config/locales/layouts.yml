@@ -11,6 +11,10 @@ fr:
         contacts: Contacts
         bills: Factures
         tickets: Demandes
+    navbar:
+      user_dashboard: Mon Espace Client
+      admin_dashboard: Espace Administrateur
+      logout: Déconnecter
 
 en:
   layouts:
@@ -25,3 +29,7 @@ en:
         contacts: Contacts
         bills: Bills
         tickets: Tickets
+    navbar:
+      user_dashboard: Client Dashboard
+      admin_dashboard: Administrator Dashboard
+      logout: Logout
