@@ -3,18 +3,18 @@
     .space-client.col-xs-4
       .panel.panel-success
         .panel-heading
-          h3 = t ".client.title"
+          h3 = t ".user_dashboard.title"
         .panel-body
           - if user_signed_in?
-            = link_to t(".client.links.logout"), destroy_user_session_path, method: :delete
+            = link_to t(".links.logout"), destroy_user_session_path, method: :delete
           - else
-            = link_to t(".client.links.login"), new_user_session_path
+            = link_to t(".links.login"), new_user_session_path
     .space-admin.col-xs-4
       .panel.panel-danger
         .panel-heading
-          h3 = t(".admin.title")
+          h3 = t(".admin_dashboard.title")
         .panel-body
           - if admin_signed_in?
-            = link_to t(".admin.links.logout"), destroy_admin_session_path, method: :delete
+            = link_to t(".links.logout"), destroy_admin_session_path, method: :delete
           - else
-            = link_to t(".admin.links.login"), new_admin_session_path
+            = link_to t(".links.login"), new_admin_session_path

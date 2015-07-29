@@ -1,28 +1,28 @@
-h1.page-header User Dashboard
+h1.page-header = t ".title"
 
 .row.placeholders
   .col-xs-6.col-sm-3.placeholder
     = link_to client_bills_url do
       = image_tag "icone_bill.png", alt: "image bills", class: "img-responsive", size: "128x128"
-    h4 Bills
-    span.text-muted = "Retard bills: #{@retard_bills}"
+    h4 = t "home.dashboard.bills"
+    span.text-muted = "#{t 'home.dashboard.retard_bills'}: #{@retard_bills}"
     br
-    span.text-muted = "Advanced bills: #{@advanced_bills}"
+    span.text-muted = "#{t 'home.dashboard.advanced_bills'}: #{@advanced_bills}"
     br
-    span.text-muted = "Next bills: #{@retard_bills}"
+    span.text-muted = "#{t 'home.dashboard.next_bills'}: #{@retard_bills}"
     br
-    span.text-muted = "Old bills: #{@old_bills}"
+    span.text-muted = "#{t 'home.dashboard.old_bills'}: #{@old_bills}"
     br
-    span.text-muted = "Total Bills: #{@bills_count}"
+    span.text-muted = "#{t 'home.dashboard.total_bills'}: #{@bills_count}"
     br
 
   .col-xs-6.col-sm-3.placeholder
     = link_to client_tickets_url do
       = image_tag "icone_ticket.png", alt: "image tickets", class: "img-responsive", size: "128x128"
-    h4 Tickets
-    span.text-muted = "Closed tickets: #{@ticket_closed}"
+    h4 = t "home.dashboard.tickets"
+    span.text-muted = "#{t 'home.dashboard.closed_tickets'}: #{@ticket_closed}"
     br
-    span.text-muted = "Opened tickets: #{@ticket_opened}"
+    span.text-muted = "#{t 'home.dashboard.opened_tickets'}: #{@ticket_opened}"
     br
-    span.text-muted = "Waiting tickets: #{@ticket_waiting}"
+    span.text-muted = "#{t 'home.dashboard.waiting_tickets'}: #{@ticket_waiting}"
     br

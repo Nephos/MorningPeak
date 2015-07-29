@@ -1,29 +1,44 @@
 fr:
   home:
+    user_dashboard:
+      title: Mon Espace Client
+    admin_dashboard:
+      title: Espace Administrateur
+    dashboard:
+      bills: Factures
+      tickets: Demandes
+      retard_bills: Factures en retard
+      advanced_bills: Factures payé à l'avance
+      next_bills: Prochaines factures
+      old_bills: Anciennes factures
+      total_bills: Toutes les factures
+      closed_tickets: Tickets clos
+      opened_tickets: Tickets ouverts
+      waiting_tickets: Tickets en attente
     index:
-      client:
-        title: Espace Client
-        links:
-          login: Se connecter
-          logout: Se déconnecter
-
-      admin:
-        title: Espace Admin
-        links:
-          login: Se connecter
-          logout: Se déconnecter
+      links:
+        login: Se connecter
+        logout: Se déconnecter
 
 en:
   home:
+    user_dashboard:
+      title: Client Dashboard
+    admin_dashboard:
+      title: Admin Dashboard
+    dashboard:
+      bills: Bills
+      tickets: Tickets
+      retard_bills: Retarded Bills
+      advanced_bills: Advanced Bills
+      next_bills: Next due Bills
+      old_bills: Old paid Bills
+      total_bills: Total Bills
+      closed_tickets: Closed Tickets
+      opened_tickets: Opened Tickets
+      waiting_tickets: Waiting Tickets
     index:
-      client:
-        title: Client Dashboard
-        links:
-          login: Sign in
-          logout: Sign out
+      links:
+        login: Sign in
+        logout: Sign out
 
-      admin:
-        title: Admin Dashboard
-        links:
-          login: Sign in
-          logout: Sign out
