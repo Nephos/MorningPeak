@@ -3,7 +3,7 @@
     .space-client.col-xs-4
       .panel.panel-success
         .panel-heading
-          h3 = t ".user_dashboard.title"
+          h3 = t "home.user_dashboard.title"
         .panel-body
           - if user_signed_in?
             = link_to t(".links.logout"), destroy_user_session_path, method: :delete
@@ -12,7 +12,7 @@
     .space-admin.col-xs-4
       .panel.panel-danger
         .panel-heading
-          h3 = t(".admin_dashboard.title")
+          h3 = t("home.admin_dashboard.title")
         .panel-body
           - if admin_signed_in?
             = link_to t(".links.logout"), destroy_admin_session_path, method: :delete

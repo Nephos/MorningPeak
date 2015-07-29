@@ -1,0 +1,27 @@
+fr:
+  layouts:
+    sidebar:
+      user:
+        user: Client
+        bills_due: Factures dûes
+        tickets: Demandes
+      admin:
+        admin: Administrateur
+        clients: Clients
+        contacts: Contacts
+        bills: Factures
+        tickets: Demandes
+
+en:
+  layouts:
+    sidebar:
+      user:
+        user: Client
+        bills_due: Due Bills
+        tickets: Tickets
+      admin:
+        admin: Administrator
+        clients: Clients
+        contacts: Contacts
+        bills: Bills
+        tickets: Tickets

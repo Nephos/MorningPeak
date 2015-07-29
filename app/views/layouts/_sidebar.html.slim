@@ -4,13 +4,13 @@
     ul.nav.nav-sidebar
       li.active
         = link_to users_dashboard_url do
-          | User
+          = t ".user.user"
           span.sr-only (current)
       li = link_to client_bills_url do
-        | bills due 
+        = t ".user.bills_due"
         .badge = user_bills_count_due
       li = link_to client_tickets_url do
-        | tickets 
+        = t ".user.tickets"
         .badge = user_tickets_unview_count
 
   / Admin side
@@ -20,11 +20,11 @@
     ul.nav.nav-sidebar
       li.active
         = link_to admins_dashboard_url do
-          | Admin
+          = t(".admin.admin")
           span.sr-only (current)
-      li = link_to "clients", clients_url
-      li = link_to "contacts", contacts_url
-      li = link_to "bills", bills_url
+      li = link_to t(".admin.clients"), clients_url
+      li = link_to t(".admin.contacts"), contacts_url
+      li = link_to t( ".admin.bills"), bills_url
       li = link_to tickets_url do
-        | tickets 
+        = t ".admin.tickets"
         .badge = admin_tickets_unview_count
