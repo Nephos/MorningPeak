@@ -13,4 +13,9 @@ module TicketsHelper
     return current_admin.tickets_unview.count
   end
 
+  def html_with_br(text)
+    texts = text.split("\n").map{|e| raw(e)}
+    texts.join(tag(:br)).html_safe
+  end
+
 end
