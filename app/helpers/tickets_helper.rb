@@ -13,4 +13,34 @@ module TicketsHelper
     return current_admin.tickets_unview.count
   end
 
+  def brize text
+    texts = text.split("\n")
+    texts.join(tag(:br))
+  end
+
+  def imagize text, uris
+    uris.each do |uri|
+      text.gsub!(uri, "<a href='#{uri}'><img src='#{uri}' alt='#{uri}'/></a>")
+    end
+    text
+  end
+
+  def linkize text, uris
+    uris.each do |uri|
+      text.gsub!(uri, "<a href='#{uri}'>#{uri}</a>")
+    end
+    text
+  end
+
+  def descriptionize text
+    uris = URI.extract(text)
+    imgs = uris.select{|e| e.match(/\.(jpg|png|jpeg|gif)\Z/)}
+    links = uris - imgs
+    text = raw     text
+    text = brize   text
+    text = imagize text, imgs
+    text = linkize text, links
+    text.html_safe
+  end
+
 end

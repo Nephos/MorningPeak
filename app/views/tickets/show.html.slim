@@ -23,7 +23,8 @@ p
   = @ticket.title
 p
   strong Description:
-  = @ticket.description
+  .container-fluid.ticket-description
+    = descriptionize @ticket.description
 p
   strong State:
   = @ticket.state
