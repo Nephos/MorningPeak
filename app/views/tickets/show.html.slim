@@ -24,7 +24,7 @@ p
 p
   strong Description:
   .container-fluid.ticket-description
-    = html_with_br @ticket.description
+    = descriptionize @ticket.description
 p
   strong State:
   = @ticket.state

@@ -29,7 +29,7 @@ p
   strong = t ".description"
   |: 
   .container-fluid.ticket-description
-    = html_with_br @ticket.description
+    = descriptionize @ticket.description
 
 - if not @ticket.tickets.empty?
   table.table.table-condensed
