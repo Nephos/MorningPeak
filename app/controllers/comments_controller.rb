@@ -1,15 +1,21 @@
 class CommentsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:index, :new]
-  before_action :set_contact, only: [:index, :new]
-  before_action :set_bill, only: [:index, :new]
+  before_action :set_client, only: [:index, :about, :new]
+  before_action :set_contact, only: [:index, :about, :new]
+  before_action :set_bill, only: [:index, :about, :new]
 
   # GET /comments
   # GET /comments.json
   def index
     @comments = Comment.all
     @comments = @comments.where(commentable: @commentable) if @commentable
+  end
+  def about
+    index()
+    @comment = Comment.new
+    @comment.commentable = @commentable
+    render :about, layout: false
   end
 
   # GET /comments/1

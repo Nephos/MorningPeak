@@ -11,16 +11,28 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :contacts do
-    resources :comments
+    resources :comments do
+      collection do
+        get 'about'
+      end
+    end
   end
   match '/contacts/:id/view', to: 'contacts#view', via: [:patch, :get], as: 'view_contact'
 
   resources :bills do
-    resources :comments
+    resources :comments do
+      collection do
+        get 'about'
+      end
+    end
   end
 
   resources :clients do
-    resources :comments
+    resources :comments do
+      collection do
+        get 'about'
+      end
+    end
   end
 
   # ----- DASHBOARDS -----
