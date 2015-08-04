@@ -6,3 +6,5 @@ $(document).ready ->
   commentableLoadComments(window.location.href)
   $(document).on "ajax:success", "#new_comment", (e, data, status, xhr) ->
     commentableLoadComments(window.location.href)
+  $(document).on "ajax:complete", ".remove-comment", (e, data, status, xhr) ->
+    commentableLoadComments(window.location.href)
