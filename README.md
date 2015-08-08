@@ -31,6 +31,7 @@ I would like money, contributions, critics, etc.
 2. [Contributions](#2-contributions)
   1. [Contributors](#21-contributors)
   2. [How to contribute](#22-how-to-contribute-)
+  3. [License](#23-license)
 
 
 
@@ -110,3 +111,13 @@ The best pratices are to create short commits, and short Merge Requests. Respect
 We accept any kind of work : translations, bug fix, additionnal features, optimizations, documentation, etc.
 
 Don't be afraid !
+
+## 2.3. License
+
+see the license in the ``License`` file.
+
+It is under:
+
+```text
+GNU GENERAL PUBLIC LICENSE
+```
