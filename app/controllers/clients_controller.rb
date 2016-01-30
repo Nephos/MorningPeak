@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   include CommentableForm
 
+  autocomplete :contact, :name
+
   before_action :authenticate_admin!
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 

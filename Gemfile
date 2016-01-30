@@ -50,21 +50,25 @@ end
 
 # Web Server
 gem 'puma'
-# Database
-gem 'pg'
-# Upload
-gem 'carrierwave'
 # Environnement .env
 gem 'dotenv-rails'
+# Database
+gem 'pg'
+
 # Users
 gem 'devise'
-# Pagination
-gem 'will_paginate'
-# Bootstrap
-gem "twitter-bootstrap-rails"
-# Bootstrap for pagination
-gem 'bootstrap-will_paginate'
-# HTML Templating
-gem 'slim-rails'
+# Upload
+gem 'carrierwave'
 # Commentable items
 gem 'acts_as_commentable'
+
+# HTML Templating
+gem 'slim-rails'
+# Bootstrap
+gem "twitter-bootstrap-rails"
+# Pagination
+gem 'will_paginate'
+# Bootstrap for pagination
+gem 'bootstrap-will_paginate'
+# Autocomplete for ids
+gem 'rails-jquery-autocomplete'

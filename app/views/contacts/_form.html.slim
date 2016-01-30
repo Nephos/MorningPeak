@@ -9,8 +9,9 @@
   .form-horizontal
     .form-group
       .field
+        = f.autocomplete_field :client, autocomplete_client_name_contacts_path, :id_element => '#contact_client_id', class: "form-control", placeholder: "Client Name"
         = f.label :client_id, class: "sr-only"
-        = f.text_field :client_id, class: "form-control", placeholder: "Client ID"
+        = f.text_field :client_id, class: "form-control sr-only", placeholder: "Client ID"
   .form-inline
     .form-group
       .field

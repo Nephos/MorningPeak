@@ -1,6 +1,8 @@
 class ContactsController < ApplicationController
   include CommentableForm
 
+  autocomplete :client, :name
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :view]
   before_action :authenticate_admin!
 
