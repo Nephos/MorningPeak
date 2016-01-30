@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   match '/contacts/:id/view', to: 'contacts#view', via: [:patch, :get], as: 'view_contact'
 
   resources :bills do
+    get :autocomplete_client_name, :on => :collection
     resources :comments do
       collection do
         get 'about'
