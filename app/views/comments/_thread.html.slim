@@ -1,0 +1,4 @@
+#comments.container-fluid
+  h2.page-header Comments
+  = render partial: "/comments/form"
+  = render partial: "/comments/about#{type == 'user' ? '_client' : '' }", locals: {commentable: commentable}

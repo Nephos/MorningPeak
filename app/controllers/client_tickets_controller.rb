@@ -1,4 +1,6 @@
 class ClientTicketsController < ApplicationController
+  include CommentableForm
+
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action :set_ticket_custom_route, only: [:close, :open, :respond]
   before_action :looks_ticket, only: [:show, :edit, :update, :close, :open]
@@ -7,13 +9,13 @@ class ClientTicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = current_user.tickets.heads.order('state DESC')
+    @tickets = current_user.tickets.order('state DESC')
   end
 
   def close
     respond_to do |format|
       if @ticket.close
-        @ticket.update(admin_view_at: Time.now)
+        @ticket.update(admin_view_at: Time.now) # add comment ?
         format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: client_tickets_url(@ticket) }
       else
@@ -26,7 +28,7 @@ class ClientTicketsController < ApplicationController
   def open
     respond_to do |format|
       if @ticket.open
-        @ticket.update(admin_view_at: nil)
+        @ticket.update(admin_view_at: nil) # add comment ?
         format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully reopened.' }
         format.json { render :show, status: :ok, location: client_tickets_url(@ticket) }
       else
@@ -36,25 +38,10 @@ class ClientTicketsController < ApplicationController
     end
   end
 
-  def respond
-    session[:user_ticket_respond_parent_id] = @ticket.id
-    @head = @ticket.head
-    @ticket = Ticket.new(ticket_id: @head.id,
-                         creator: current_user,
-                         title: @ticket.title)
-    if @ticket.close? or @head.close?
-      respond_to do |format|
-        format.html { redirect_to client_ticket_url(@head), alert: 'The ticket is closed' }
-        format.json { render json: {ticket: 'The ticket is closed'}, status: :unprocessable_entity }
-      end
-    else
-      render :new
-    end
-  end
-
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    prepare_comment_for @ticket
   end
 
   # GET /tickets/new
@@ -70,15 +57,10 @@ class ClientTicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-    if session[:user_ticket_respond_parent_id]
-      @head = Ticket.find(session[:user_ticket_respond_parent_id]).head
-      @ticket.ticket_id = @head.id
-    end
     @ticket.creator = current_user
 
     respond_to do |format|
       if @ticket.save
-        @ticket.close_head if @ticket.close?
         format.html { redirect_to client_ticket_url(@ticket), notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: client_tickets_url(@ticket) }
       else
@@ -93,7 +75,6 @@ class ClientTicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        @ticket.close_head if @ticket.close?
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: client_tickets_url(@ticket) }
       else
@@ -116,11 +97,11 @@ class ClientTicketsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_ticket
-    @ticket = Ticket.find(params[:id])
-    @ticket = nil if not @ticket.creator == current_user and not @ticket.head.creator == current_user
+    @ticket = Ticket.find_by(id: params[:id], creator: current_user)
     @ticket
   end
 
+  # TODO: remove
   def set_ticket_custom_route
     params[:id] = params[:client_ticket_id]
     set_ticket
@@ -132,12 +113,7 @@ class ClientTicketsController < ApplicationController
   end
 
   def looks_ticket
-    if @ticket.head.head_creator_view_at.nil?
-      @ticket.head.update(head_creator_view_at: Time.now)
-    end
-    Ticket.where(creator: current_user, head_creator_view_at: nil, ticket: @ticket.head).each do |t|
-      t.update(head_creator_view_at: Time.now)
-    end
+    @ticket.set_view_by('User')
   end
 
 end

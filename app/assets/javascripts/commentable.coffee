@@ -3,8 +3,9 @@ commentableLoadComments = (base_url) ->
     $("#comments").html(e)
 
 $(document).ready ->
-  commentableLoadComments(window.location.href)
+  url = window.location.pathname
+  commentableLoadComments(url)
   $(document).on "ajax:success", "#new_comment", (e, data, status, xhr) ->
-    commentableLoadComments(window.location.href)
+    commentableLoadComments(url)
   $(document).on "ajax:complete", ".remove-comment", (e, data, status, xhr) ->
-    commentableLoadComments(window.location.href)
+    commentableLoadComments(url)

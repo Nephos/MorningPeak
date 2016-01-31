@@ -1,19 +1,16 @@
-h1.page-header = "Show ticket: #{@ticket.head.title}"
+h1.page-header = "Show ticket: #{@ticket.title}"
 
 p
   strong
     | Id: #
     = @ticket.id
-p
-  strong Réponse à:
-  = link_to @ticket.head.title, @ticket.head
 
 p
   strong State:
-  - if @ticket.head.state == Ticket::CLOSE
-    td.bg-danger = @ticket.head.state
+  - if @ticket.state == Ticket::CLOSE
+    td.bg-danger = @ticket.state
   - else
-    td.bg-success = @ticket.head.state
+    td.bg-success = @ticket.state
 
 p
   strong Creator:
@@ -29,38 +26,13 @@ p
   strong State:
   = @ticket.state
 
-table.table.table-condensed.
-  thead
-    tr
-      th Creator
-      th Title
-      th Description
-      th Last update
-      th
-      th
-      th
-
-  tbody
-    - @ticket.tickets.each do |ticket|
-      tr
-        td = link_to_creator(ticket)
-        td = link_to ticket.title, ticket
-        td = ticket.description
-        - if ticket.state == Ticket::CLOSE
-          td.bg-danger = ticket.state
-        - else
-          td.bg-success = ticket.state
-        td = ticket.updated_at.to_s(:long)
-        td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_ticket_path(ticket)
-        td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-
 br
 
 - if @ticket.open?
-  = link_to 'Respond', ticket_respond_path(@ticket), class: 'btn btn-sm btn-default'
   = link_to 'Close', ticket_close_path(@ticket), method: :patch, class: 'btn btn-sm btn-success'
 - else
   = link_to 'Reopen', ticket_open_path(@ticket), method: :patch, class: 'btn btn-sm btn-danger'
 = link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-sm btn-default'
 = link_to 'Back', tickets_path, class: 'btn btn-sm btn-default'
+
+== render partial: "/comments/thread", locals: {commentable: @ticket, type: 'admin'}

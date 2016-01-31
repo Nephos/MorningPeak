@@ -16,8 +16,6 @@ I want a simple application, that I __understand__, and that I __need__. By __si
 - A pluggable application, with many __REST API__. Because tasks and reports are usefull.
 - Generic items. I prefere __ONE kind of Bills + Tags__ than __4 ou 5 kinds of Bills__ (for example).
 
-I would like money, contributions, critics, etc.
-
 <img alt="Tickets Desktop view" src="http://i.imgur.com/e004zBZ.png" width="500" />
 
 
@@ -32,18 +30,18 @@ I would like money, contributions, critics, etc.
   1. [Contributors](#21-contributors)
   2. [How to contribute](#22-how-to-contribute-)
   3. [License](#23-license)
+3. [Architecture](#3-architecture)
+  1. [Modelisation](#31-modelisation)
 
 
 
 # 1. Installation
 
 ## 1.1. Requirements
-
 - Ruby 2.0 or greater.
 - Postgresql server 9 or greater running with creditentials.
 
 ## 1.2. Initialization
-
 Start by pasting this script in your shell:
 ```bash
 cd MorningPeak/
@@ -57,7 +55,6 @@ rake db:seed				# will generate default data. Not on production ;)
 ```
 
 ## 1.3. Configuration
-
 - You can create a file ``.env`` to save your locals cvars without pollute your global env.
 - You can also create ``.env.production`` etc. for environement specifics cvars
 - A ``.env`` file looks like:
@@ -71,7 +68,6 @@ LOCALE: fr
   - COMPANY
 
 ## 1.4. First start
-
 When you done with the configuration of the database (editing ``config/database.yml``),
 you can run the server by the following command :
 ```
@@ -100,7 +96,6 @@ Checkout for [rails minidoc](RailsMinidoc.md) for a resume of rails.
 <img alt="Look at this cute face" src="https://pbs.twimg.com/media/CJ_ErJ2W8AAdev3.jpg" width="200" height="150" />
 
 ## 2.2. How to contribute ?
-
 You can contribute to this project by Merge Request on the gitlab repository [here](https://gitlab.com/poulet_a/MorningPeak).
 The best pratices are to create short commits, and short Merge Requests. Respect the git commit nomage convention as possible with:
 
@@ -121,3 +116,18 @@ It is under:
 ```text
 GNU GENERAL PUBLIC LICENSE
 ```
+
+# 3. Architecture
+
+## 3.1 Modelisation
+
+### Creation and belongs
+- User has a Client (which is created when the user is created)
+- Client has many Contacts and Bills
+- User/Admin has many Tickets and Comments
+
+### Permissions
+- Admin can Comment, Read, Edit, Delete, and Create everything
+- User can open Ticket, Anwser and Close them.
+- User can Read every Bills wich is associated to him
+- User can not read his client informations (like notes, ...)

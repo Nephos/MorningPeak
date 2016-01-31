@@ -1,4 +1,1 @@
-h2 = "Comments"
-
-== render partial: 'about', locals: {commentable: @commentable}
-== render partial: '/comments/form'
+== render partial: 'thread', locals: {commentable: @commentable, type: 'admin'}

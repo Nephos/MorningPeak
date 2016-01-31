@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
 
-  default_scope -> { order('created_at ASC') }
+  default_scope -> { order('created_at DESC') }
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -18,6 +18,13 @@ class Comment < ActiveRecord::Base
       []
     else
       Comment.where(commentable: commentable)
+    end
+  end
+
+  after_create :update_view_date_for_ticket
+  def update_view_date_for_ticket
+    if commentable.is_a? Ticket
+      commentable.updated_by(creator.class.to_s)
     end
   end
 
