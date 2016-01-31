@@ -24,7 +24,7 @@ table.table.table-condensed
         - else
           td.bg-success = t ".states.open"
         td = ticket.updated_at.to_s(:long)
-        td = ticket.comments.empty? ? "never" : distance_of_time_in_words_to_now(ticket.comments.last.updated_at)
+        td = ticket.comments.empty? ? "never" : distance_of_time_in_words_to_now(ticket.comments.first.updated_at)
         td = link_to (t "show"), ticket
         td = link_to (t "edit"), edit_client_ticket_path(ticket)
         - if ticket.open?

@@ -21,4 +21,11 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  after_create :update_view_date_for_ticket
+  def update_view_date_for_ticket
+    if commentable.is_a? Ticket
+      commentable.updated_by(creator.class.to_s)
+    end
+  end
+
 end

@@ -59,6 +59,11 @@ class Ticket < ActiveRecord::Base
     end
   end
 
+  def updated_by(viewer_type)
+    set_view_by(viewer_type)
+    set_unview_by(viewer_type)
+  end
+
   def close
     if close?
       errors[:base] << "Already close"

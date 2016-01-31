@@ -59,6 +59,11 @@ Rails.application.routes.draw do
   resources :client_tickets, path: '/client/tickets' do
     patch :close
     patch :open
+    resources :comments do
+      collection do
+        get 'about', to: 'comments#about_client'
+      end
+    end
   end
   resources :client_bills, path: '/client/bills'
 

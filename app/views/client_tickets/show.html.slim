@@ -31,7 +31,7 @@ p
   .container-fluid.ticket-description
     = descriptionize @ticket.description
 
-/= render partial: "/comments/thread", locals {commentable: @ticket, type: 'client'}
+== render partial: "/comments/thread", locals: {commentable: @ticket, type: 'user'}
 
 br
 
@@ -42,4 +42,3 @@ br
 = link_to (t 'edit'), edit_client_ticket_path(@ticket), class: 'btn btn-sm btn-default'
 = link_to (t 'back'), client_tickets_path, class: 'btn btn-sm btn-default'
 
-== render partial: "/comments/thread", locals: {commentable: @ticket, type: 'user'}
