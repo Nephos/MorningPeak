@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_client, only: [:index, :about, :new]
   before_action :set_contact, only: [:index, :about, :new]
   before_action :set_bill, only: [:index, :about, :new]
+  before_action :set_ticket, only: [:index, :about, :new]
 
   # GET /comments
   # GET /comments.json
@@ -95,6 +96,9 @@ class CommentsController < ApplicationController
   end
   def set_bill
     @commentable ||= Bill.find_by_id(params[:bill_id])
+  end
+  def set_ticket
+    @commentable ||= Ticket.find_by_id(params[:ticket_id])
   end
 
 end

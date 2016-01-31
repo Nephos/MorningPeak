@@ -14,7 +14,6 @@ table.table.table-condensed.
       th
       th
       th
-      th
 
   tbody
     - @tickets.each do |ticket|
@@ -22,17 +21,16 @@ table.table.table-condensed.
         td = link_to("##{ticket.id}", ticket)
         td = link_to_creator(ticket)
         td = link_to ticket.title, ticket
-        td = ticket.tickets.empty? ? ticket.description : ticket.tickets.first.description
+        td = ticket.short_description
         - if ticket.state == Ticket::CLOSE
           td.bg-danger = ticket.state
         - else
           td.bg-success = ticket.state
         td = ticket.updated_at.to_s(:long)
-        td = ticket.last_response ? distance_of_time_in_words_to_now(ticket.last_response.updated_at) : "never"
+        td = ticket.comments.empty? ? "never" : distance_of_time_in_words_to_now(ticket.comments.last.updated_at)
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)
         td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to 'Respond', ticket_respond_path(ticket) if ticket.open?
         - if ticket.open?
           td = link_to 'Close', ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
         - elsif ticket.close?

@@ -1,13 +1,14 @@
-  table.table.table-condensed
+table.table.table-condensed
+  tr
+    th Creator
+    th Title
+    th Content
+    th
+  - commentable.comments.each do |c|
     tr
-      th Title
-      th Content
-      th
-    - commentable.comments.each do |c|
-      tr
-        td = c.title
-        td = c.comment
-        td
-          = link_to "/comments/#{c.id}.json", remote: true, data: {:confirm => 'Are you sure?'}, method: :delete, class: "close remove-comment", type: "button", "aria-label" => "Close" do
-            span aria-hidden="true" &times;
-
+      td = c.creator_type
+      td = c.title
+      td = c.comment
+      td
+        = link_to "/comments/#{c.id}.json", remote: true, data: {:confirm => 'Are you sure?'}, method: :delete, class: "close remove-comment", type: "button", "aria-label" => "Close" do
+          span aria-hidden="true" &times;

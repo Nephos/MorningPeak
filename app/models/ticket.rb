@@ -1,5 +1,7 @@
 # coding: utf-8
 class Ticket < ActiveRecord::Base
+  acts_as_commentable
+
   # WARNING ! IT REVERSE LAST / FIRST
   default_scope { order('created_at DESC') }
 
@@ -16,12 +18,8 @@ class Ticket < ActiveRecord::Base
   belongs_to :creator, polymorphic: true
   delegate :name, to: :creator, prefix: true
 
-  belongs_to :ticket
-  has_many :tickets
-
-  scope :heads, -> { where(ticket_id: nil) }
-  scope :open, -> { heads.where(state: OPEN) }
-  scope :close, -> { heads.where(state: CLOSE) }
+  scope :open, -> { where(state: OPEN) }
+  scope :close, -> { where(state: CLOSE) }
 
   before_save :check_creator
   def check_creator
@@ -30,39 +28,35 @@ class Ticket < ActiveRecord::Base
     raise ActiveRecord::RecordInvalid.new(self)
   end
 
-  after_create :looks_views
-  def looks_views
+  after_create :set_view_init
+  def set_view_init
+    set_view_by(creator_type)
+  end
+
+  def set_view_by(viewer_type)
     if creator_type == 'Admin'
-      # Entre admin pas de soucis
-      if head.creator_type == 'Admin'
-        update(admin_view_at: Time.now, head_creator_view_at: Time.now)
-      # Réponse à un client, mise a jour pour notification
-      else
-        update(admin_view_at: Time.now, head_creator_view_at: nil)
-        head.update(admin_view_at: Time.now, head_creator_view_at: nil)
+      if viewer_type == 'Admin'
+        update(admin_view_at: Time.now, creator_view_at: Time.now)
       end
-    else
-      # Reponse client, mise a jour pour notification
-      if head?
-        update(admin_view_at: nil, head_creator_view_at: Time.now)
-      else
-        update(admin_view_at: nil, head_creator_view_at: Time.now)
-        head.update(admin_view_at: nil, head_creator_view_at: Time.now)
+    elsif creator_type == 'User'
+      if viewer_type == 'User'
+        update(creator_view_at: Time.now)
+      elsif viewer_type == 'Admin'
+        update(admin_view_at: Time.now)
       end
     end
   end
 
-  def last_response
-    head.tickets.last
-  end
-
-  def head
-    return self if head?
-    return ticket.head
-  end
-
-  def head?
-    ticket.nil?
+  def set_unview_by(viewer_type)
+    if creator_type == 'Admin'
+      return # ... ?
+    elsif creator_type == 'User'
+      if viewer_type == 'User'
+        update(admin_view_at: nil)
+      elsif viewer_type == 'Admin'
+        update(creator_view_at: nil)
+      end
+    end
   end
 
   def close
@@ -70,15 +64,7 @@ class Ticket < ActiveRecord::Base
       errors[:base] << "Already close"
       return false
     end
-    head.update(state: Ticket::CLOSE) && update(state: Ticket::CLOSE)
-  end
-
-  def close_head
-    if head.close?
-      errors[:base] << "Already close"
-      return false
-    end
-    head.update(state: Ticket::CLOSE)
+    update(state: Ticket::CLOSE)
   end
 
   def open
@@ -86,7 +72,7 @@ class Ticket < ActiveRecord::Base
       errors[:base] << "Already open"
       return false
     end
-    head.update(state: Ticket::OPEN) && update(state: Ticket::OPEN)
+    update(state: Ticket::OPEN)
   end
 
   def open?
@@ -98,11 +84,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def short_description
-    if description.size > 100
-      description[0..97] + "..."
-    else
-      description
-    end
+    description.to_s.first(100)
   end
 
 end

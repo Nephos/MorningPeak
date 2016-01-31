@@ -12,7 +12,7 @@ class Admin < ActiveRecord::Base
   has_many :comments, as: :creator
 
   def tickets_unview
-    Ticket.all.heads.where(admin_view_at: nil)
+    Ticket.all.where(admin_view_at: nil)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725193246) do
+ActiveRecord::Schema.define(version: 20160131000119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150725193246) do
     t.text     "description"
     t.integer  "amount"
     t.boolean  "paid",          default: false,        null: false
-    t.date     "emission_date", default: '2015-07-24', null: false
+    t.date     "emission_date", default: '2016-01-30', null: false
     t.date     "due_date",                             null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
@@ -96,18 +96,16 @@ ActiveRecord::Schema.define(version: 20150725193246) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "creator_id"
     t.string   "creator_type"
-    t.integer  "ticket_id"
     t.string   "title"
     t.text     "description"
-    t.string   "state",                default: "open", null: false
+    t.string   "state",           default: "open", null: false
     t.time     "admin_view_at"
-    t.time     "head_creator_view_at"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.time     "creator_view_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "tickets", ["creator_type", "creator_id"], name: "index_tickets_on_creator_type_and_creator_id", using: :btree
-  add_index "tickets", ["ticket_id"], name: "index_tickets_on_ticket_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -129,5 +127,4 @@ ActiveRecord::Schema.define(version: 20150725193246) do
 
   add_foreign_key "bills", "clients"
   add_foreign_key "contacts", "clients"
-  add_foreign_key "tickets", "tickets"
 end

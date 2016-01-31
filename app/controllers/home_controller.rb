@@ -8,8 +8,8 @@ class HomeController < ApplicationController
     @next_bills = current_user.bills.next.count
     @old_bills = current_user.bills.old.count
     @bills_count = current_user.bills.count
-    @ticket_closed = current_user.tickets.heads.close.count
-    @ticket_opened = current_user.tickets.heads.open.count
+    @ticket_closed = current_user.tickets.close.count
+    @ticket_opened = current_user.tickets.open.count
     @ticket_waiting = current_user.tickets_unview.count
   end
 
@@ -22,8 +22,8 @@ class HomeController < ApplicationController
     @next_bills = Bill.next.count
     @old_bills = Bill.old.count
     @bills_count = Bill.count
-    @ticket_closed = Ticket.heads.close.count
-    @ticket_opened = Ticket.heads.open.count
+    @ticket_closed = Ticket.close.count
+    @ticket_opened = Ticket.open.count
     @ticket_waiting = current_admin.tickets_unview.count
   end
 

@@ -1,19 +1,21 @@
 class TicketsController < ApplicationController
+  include CommentableForm
+
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_ticket_custom_route, only: [:close, :open, :respond]
+  before_action :set_ticket_custom_route, only: [:close, :open]
   before_action :looks_ticket, only: [:show, :edit, :update, :close, :open]
   before_action :authenticate_admin!
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.heads.order('state DESC')
+    @tickets = Ticket.order('state DESC')
   end
 
   def close
     respond_to do |format|
       if @ticket.close
-        @ticket.update(admin_view_at: Time.now)
+        @ticket.update(admin_view_at: Time.now) # add comment ?
         format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully closed.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -26,7 +28,7 @@ class TicketsController < ApplicationController
   def open
     respond_to do |format|
       if @ticket.open
-        @ticket.update(head_creator_view_at: nil)
+        @ticket.update(creator_view_at: nil) # add comment ?
         format.html { redirect_to ticket_url(@ticket), notice: 'Ticket was successfully reopened.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -36,24 +38,10 @@ class TicketsController < ApplicationController
     end
   end
 
-  def respond
-    @head = @ticket.head
-    @ticket = Ticket.new(ticket_id: @head.id,
-                         creator: current_admin,
-                         title: @ticket.title)
-    if @ticket.close? or @head.close?
-      respond_to do |format|
-        format.html { redirect_to ticket_url(@head), alert: 'the ticket is closed' }
-        format.json { render json: {ticket: 'the ticket is closed'}, status: :unprocessable_entity }
-      end
-    else
-      render :new
-    end
-  end
-
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    prepare_comment_for @ticket
   end
 
   # GET /tickets/new
@@ -88,7 +76,6 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        @ticket.close_head if @ticket.close?
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -124,12 +111,7 @@ class TicketsController < ApplicationController
   end
 
   def looks_ticket
-    if @ticket.head.admin_view_at.nil?
-      @ticket.head.update(admin_view_at: Time.now)
-    end
-    Ticket.where(creator: current_admin, admin_view_at: nil, ticket: @ticket.head).each do |t|
-      t.update(admin_view_at: Time.now)
-    end
+    @ticket.set_view_by('Admin')
   end
 
 end

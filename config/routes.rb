@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :tickets do
     patch :close
     patch :open
-    get :respond
+    resources :comments do
+      collection do
+        get 'about'
+      end
+    end
   end
 
 
@@ -55,7 +59,6 @@ Rails.application.routes.draw do
   resources :client_tickets, path: '/client/tickets' do
     patch :close
     patch :open
-    get :respond
   end
   resources :client_bills, path: '/client/bills'
 

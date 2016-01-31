@@ -4,7 +4,6 @@ table.table.table-condensed
   thead
     tr
       th ID
-      th = t ".creator"
       th = t ".title"
       th = t ".description"
       th = t ".state"
@@ -13,25 +12,21 @@ table.table.table-condensed
       th
       th
       th
-      th
 
   tbody
     - @tickets.each do |ticket|
-      tr class="#{ticket.head_creator_view_at.nil? ? 'bg-warning' : ''}"
+      tr class="#{ticket.creator_view_at.nil? ? 'bg-warning' : ''}"
         td = link_to("##{ticket.id}", client_ticket_path(ticket))
-        td = link_to_creator(ticket)
         td = link_to ticket.title, client_ticket_path(ticket)
-        td = ticket.tickets.empty? ? ticket.description : ticket.tickets.first.description
+        td = ticket.short_description
         - if ticket.state == Ticket::CLOSE
           td.bg-danger = t ".states.close"
         - else
           td.bg-success = t ".states.open"
         td = ticket.updated_at.to_s(:long)
-        td = ticket.last_response ? distance_of_time_in_words_to_now(ticket.last_response.updated_at) : "never"
+        td = ticket.comments.empty? ? "never" : distance_of_time_in_words_to_now(ticket.comments.last.updated_at)
         td = link_to (t "show"), ticket
         td = link_to (t "edit"), edit_client_ticket_path(ticket)
-        / td = link_to 'Destroy', ticket, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to (t "respond"), client_ticket_respond_path(ticket) if ticket.open?
         - if ticket.open?
           td = link_to (t "close"), client_ticket_close_path(ticket), data: {:confirm => 'Are you sure?'}, :method => :patch
         - elsif ticket.close?

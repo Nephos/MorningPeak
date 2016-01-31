@@ -16,11 +16,13 @@ class User < ActiveRecord::Base
 
   after_create :create_client
   def create_client
-    update(client: Client.create(name: email.gsub(/@.+/, '')))
+    if self.client_id.nil?
+      update_attributes(client: Client.create(name: email.tr('@.-_', ' ')))
+    end
   end
 
   def tickets_unview
-    tickets.heads.where(head_creator_view_at: nil)
+    tickets.where(creator_view_at: nil)
   end
 
 end
