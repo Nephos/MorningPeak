@@ -10,7 +10,7 @@ class Client < ActiveRecord::Base
   delegate :name, to: :contact, allow_nil: true, prefix: true
 
   def last_contact
-    contacts.pluck(:view_at).max || "never"
+    contacts.where('view_at IS NOT NULL').pluck(:view_at).max || "never"
   end
 
   def bills_retard
